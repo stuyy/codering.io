@@ -1,0 +1,124 @@
+#main {
+  background-color: rgb(88, 90, 87);
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.important {
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 125px;
+  min-height: calc(88vh - 64px);
+}
+
+.logo {
+  width: 450px;
+  opacity: 70%;
+  transition: width .5s, opacity 1s;
+}
+
+.logo:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.buttons button {
+  padding: 15px;
+  margin: 15px;
+}
+
+.buttons i {
+  font-size: 64px;
+}
+
+.buttons span {
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+#discord {
+  transform: translate(0%, 4px);
+  color: #7289DA;
+  cursor: pointer;
+}
+
+.instructions {
+  min-height: 100vh;
+  background-color: #EFF1F3;
+}
+
+.title {
+  font-size: 64px;
+  margin: 0;
+  padding: 0;
+}
+
+.faq-title {
+  font-size: 64px;
+  padding-top: 60px;
+  text-align: center;
+}
+
+.faq-subtitle {
+  font-size: 32px;
+  margin-top: 20px;
+}
+
+.article-faq {
+  padding: 25px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.faq-description {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.article-faq .title {
+  padding-top: 25px;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  #main {
+    min-height: 100%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .logo {
+    width: 350px;
+  }
+
+  .important {
+    width: 100%;
+  }
+
+  .buttons button {
+    padding: 15px;
+    margin: 10px;
+  }
+  
+  .buttons i {
+    font-size: 32px;
+  }
+  
+  .buttons span {
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  #discord {
+    transform: translate(0%, 2px);
+    color: #7289DA;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 320px) {
+  .logo {
+    width: 200px;
+  }
+}

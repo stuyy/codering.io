@@ -1,0 +1,31 @@
+.mat-toolbar {
+  justify-content: space-evenly;
+  font-family: 'Jost';
+}
+
+#login i {
+  padding: 2px;
+}
+
+#login {
+  position: relative;
+}
+
+#github {
+  color: #adb3b8;
+}
+
+#github:hover {
+  cursor: pointer;
+  color: white;
+}
+
+#discord {
+  transform: translate(0%, 2px);
+  color: #7289DA;
+  cursor: pointer;
+}
+
+#discord:hover {
+  color: rgb(146, 169, 251);
+}
