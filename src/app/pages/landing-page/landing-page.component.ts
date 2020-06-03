@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,10 +15,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   loginGitHub(): void {
-    
-  }
-
-  loginDiscord(): void {
-
+    window.location.href = environment.github;
   }
 }

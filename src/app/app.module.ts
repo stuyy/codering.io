@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { MatButtonModule } from '@angular/material/button';
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

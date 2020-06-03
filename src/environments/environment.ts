@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  github: 'https://github.com/login/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fgithub%2Fredirect&scope=user&client_id=Iv1.58c76b3d52281261',
+  discord: 'https://discord.com/api/oauth2/authorize?client_id=717483058248548402&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify',
+  host: 'http://localhost:3000'
 };
 
 /*
