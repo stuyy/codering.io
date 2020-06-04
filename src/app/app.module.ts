@@ -10,12 +10,16 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { MatButtonModule } from '@angular/material/button';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
 import { AuthGuard } from './guards/auth.guard';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { MatCardModule } from '@angular/material/card';
 import { DashboardNavigatorComponent } from './components/dashboard-navigator/dashboard-navigator.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { AdministratorComponent } from './pages/administrator/administrator.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,8 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     DashboardComponent,
     UserProfileComponent,
     DashboardNavigatorComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    AdministratorComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,9 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     MatButtonModule,
     HttpClientModule,
     MatCardModule,
-    StoreModule.forRoot({}, {}),
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

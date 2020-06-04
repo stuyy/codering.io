@@ -1,43 +1,55 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
+import { Subscription } from 'rxjs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  encapsulation: ViewEncapsulation.None,
-  styles: [
-    `
-    host ::ng-deep app-user-profile { width: 50%; }`
+  animations: [
+    trigger('fadeInOut', [
+      state('open', style({
+        opacity: '100%'
+      })),
+      state('closed', style({
+        opacity: '0%'
+      })),
+      transition('closed => open', [
+        animate('.5s ease-in-out')
+      ]),
+    ])
   ]
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
-  public connected: boolean = false;
   public loading: boolean = true;
   public user: User;
-  constructor(private auth: AuthService, private router: Router) { }
+  private auth$: Subscription;
+
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private guard: AuthGuard) {
+      
+    }
 
   ngOnInit(): void {
-    this.auth.getAuth()
-      .subscribe((user: User) => {
+    this.auth$ = this.guard.authed.asObservable().subscribe((user) => {
+      setTimeout(() => {
         this.loading = false;
         this.user = user;
-        console.log(this.user);
-        if (this.user.discordId) this.connected = true;
-        console.log(this.connected);
-      }, (err) => {
-        this.loading = false;
-        console.log(err);
-        this.router.navigate(['/']);
-      });
+      }, 300)
+    }, (err) => {
+      this.loading = false;
+      this.router.navigate(['/']);
+    });
   }
 
-  connectDiscord(): void {
-    window.open(environment.discordRedirect)
+  ngOnDestroy(): void {
+    this.auth$.unsubscribe();
+    console.log('Unsubscribed');
   }
-
 }

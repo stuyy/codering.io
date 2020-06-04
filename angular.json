@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "intellectual-developers"
+  "defaultProject": "intellectual-developers",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

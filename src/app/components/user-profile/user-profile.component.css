@@ -1,38 +1,60 @@
 .mat-card {
-  font-family: 'Jost';
   background-color: #E0E0E0;
   padding: 0;
+  height: 332px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .mat-card-header {
+  
+  font-family: 'Jost';
   background-color: #424242;
-  padding: 12px;
+  padding: 24px;
   height: 40px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 .mat-card-title {
+  
+  font-family: 'Jost';
   font-size: 24px;
   font-weight: bold;
   color: white;
 }
 
 .mat-card-subtitle a {
+  
+  font-family: 'Jost';
   color: white;
   font-size: 16px;
 }
 
 .mat-card-content {
-  padding: 16px 16px 0px 16px;
+  
+  font-family: 'Jost';
+  padding: 24px;
   font-size: 20px;
 }
 
-.mat-card-actions {
-  margin: 0;
-  background-color: #424242;
-  padding: 12px;
-  height: 40px;
+#menu {
+  position: absolute;
+  right: 15px;
+  color: white;
+  width: 50px !important;
+  height: 50px !important;
+  top: 20px;
+  display: none;
 }
 
-.mat-card>.mat-card-actions:last-child {
-  padding-bottom: 12px;
+#menu .mat-icon {
+  font-size: 32px;
+  padding-right: 10px;
+}
+
+@media (max-width: 1445px) {
+  #menu {
+    display: unset;
+  }
 }

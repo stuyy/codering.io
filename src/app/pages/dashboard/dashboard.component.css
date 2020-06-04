@@ -1,7 +1,6 @@
 .main {
   background-color: rgb(88, 90, 87);
-  height: calc(100% - 64px);
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 #discord {
@@ -31,19 +30,11 @@
   padding-left: 10px;
 }
 
-app-user-profile  {
-  width: 50%;
-}
-
-app-dashboard-navigator {
-  width: 300px;
-  margin-left: 10px;
-}
-
 .main-top {
-  margin-top: 50px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .user-card-container {
@@ -52,8 +43,57 @@ app-dashboard-navigator {
   width: 100%;
 }
 
+app-user-profile  {
+  width: 50%;
+}
+
+app-dashboard-navigator {
+  width: 20%;
+  margin-left: 10px;
+}
+
 .statistics-container {
   margin: 0 auto;
   margin-top: 20px;
-  width: 66%;
+  width: 70.5%;
+}
+
+.spinner-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+mat-spinner {
+  zoom: 300%;
+}
+
+@media (max-width: 1445px) {
+  .user-card-container {
+    flex-direction: column-reverse;
+    width: 80%;
+    margin: 0 auto;
+  }
+  app-user-profile  {
+    width: 100%;
+    margin-top: 10px;
+  }
+  app-dashboard-navigator {
+    width: 100%;
+    margin-left: unset;
+    margin-top: -40px;
+    display: none;
+  }
+  .statistics-container {
+    width: 80%;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .main-top {
+    width: 1920px;
+    margin: 0 auto;
+  }
 }

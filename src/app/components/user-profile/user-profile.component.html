@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="user">
   <mat-card-header>
     <div mat-card-avatar
       [style.backgroundImage]="'url(' + user.avatar + ')'"
@@ -8,16 +8,23 @@
     <mat-card-subtitle>
       <a [href]="user.profileUrl" target="_element">@{{user.username}}</a>
     </mat-card-subtitle>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item>View Pull Requests</button>
+      <button mat-menu-item>View Approved Pull Requests</button>
+      <button mat-menu-item>View Approved Pull Requests</button>
+      <button mat-menu-item>View Comments</button>
+      <button mat-menu-item>View Issues</button>
+      <button mat-menu-item>View Leaderboards</button>
+      <button mat-menu-item>Go to Discord</button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="appMenu" id="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
   </mat-card-header>
   <mat-card-content>
-    <h1>Discord - {{user.discordTag}}</h1>
     <p>Points: 0</p>
     <p>Pull Requests: 0</p>
     <p>Issues: 0</p>
     <p>Comments: 0</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
 </mat-card>
