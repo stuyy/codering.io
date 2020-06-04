@@ -1,0 +1,59 @@
+.main {
+  background-color: rgb(88, 90, 87);
+  height: calc(100% - 64px);
+  overflow: hidden;
+}
+
+#discord {
+  color: #7289DA;
+  cursor: pointer;
+}
+
+.buttons {
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgb(88, 90, 87);
+  height: calc(100vh - 64px);
+}
+
+.buttons button {
+  padding: 15px;
+  margin: 15px;
+  margin-top: 350px;
+}
+
+.buttons i {
+  font-size: 64px;
+}
+
+.buttons span {
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+app-user-profile  {
+  width: 50%;
+}
+
+app-dashboard-navigator {
+  width: 300px;
+  margin-left: 10px;
+}
+
+.main-top {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.statistics-container {
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 66%;
+}

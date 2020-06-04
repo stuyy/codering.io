@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<div class="main" *ngIf="!loading">
+  <section class="buttons" *ngIf="!connected; else other;">
+    <button mat-raised-button color="primary" (click)="connectDiscord()">
+      <i id="discord" class="fab fa-discord"></i>
+      <span>Connect With Discord</span>
+    </button>
+  </section>
+  <ng-template #other>
+    <section class="main-top">
+      <section class="user-card-container">
+        <app-user-profile class="profile" [user]="user"></app-user-profile>
+        <app-dashboard-navigator></app-dashboard-navigator>
+      </section>
+      <section class="statistics-container">
+        <app-statistics></app-statistics>
+      </section>
+    </section>
+  </ng-template>
+</div>

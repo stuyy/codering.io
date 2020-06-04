@@ -16,13 +16,7 @@
 
 .logo {
   width: 450px;
-  opacity: 70%;
   transition: width .5s, opacity 1s;
-}
-
-.logo:hover {
-  cursor: pointer;
-  opacity: 100%;
 }
 
 .buttons button {

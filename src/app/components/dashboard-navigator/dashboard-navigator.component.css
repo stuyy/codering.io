@@ -1,0 +1,12 @@
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-card-content button {
+  margin: 3px;
+}
+
+.mat-card {
+  background-color: #424242;
+}
