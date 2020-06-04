@@ -4,12 +4,21 @@
   </div>
   <div [@fadeInOut]="!loading ? 'open' : 'closed'">
     <section class="main-top">
-    <section class="user-card-container">
-      <app-user-profile class="profile" [user]="user"></app-user-profile>
-      <app-dashboard-navigator></app-dashboard-navigator>
-    </section>
-    <section class="statistics-container">
-      <app-statistics></app-statistics>
-    </section>
+      <section class="search-bar-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Search For User</mat-label>
+          <input type="text" matInput>
+        </mat-form-field>
+        <button mat-fab color="primary" (click)="search()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </section>
+      <section class="user-card-container">
+        <app-user-profile class="profile" [user]="user"></app-user-profile>
+        <app-dashboard-navigator></app-dashboard-navigator>
+      </section>
+      <section class="statistics-container">
+        <app-statistics></app-statistics>
+      </section>
   </section>
 </div>

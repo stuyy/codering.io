@@ -10,6 +10,7 @@ export class DashboardNavigatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

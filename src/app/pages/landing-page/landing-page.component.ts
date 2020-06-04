@@ -39,7 +39,6 @@ export class LandingPageComponent implements OnInit {
         }
       })
   }
-
   loginGitHub(): void {
     window.location.href = environment.github;
   }

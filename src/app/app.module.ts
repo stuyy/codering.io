@@ -19,6 +19,8 @@ import { AdministratorComponent } from './pages/administrator/administrator.comp
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { GithubModule } from './github/github.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    GithubModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -42,6 +45,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
+    MatInputModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

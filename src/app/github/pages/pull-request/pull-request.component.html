@@ -1,0 +1,6 @@
+<div class="main">
+  <app-pull-request-item
+    *ngFor="let pullRequest of pullRequests | async"
+    [pullRequest]="pullRequest"
+    ></app-pull-request-item>
+</div>

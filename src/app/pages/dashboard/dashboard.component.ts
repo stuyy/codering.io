@@ -48,6 +48,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
+  search() {
+    console.log('Searching...');
+  }
+
   ngOnDestroy(): void {
     this.auth$.unsubscribe();
     console.log('Unsubscribed');

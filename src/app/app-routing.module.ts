@@ -10,7 +10,8 @@ import { AdminGuard } from './guards/admin/admin.guard';
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'administrator', component: AdministratorComponent, canActivate: [ AuthGuard, AdminGuard ]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ]}
+  { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ]},
+  { path: 'github', loadChildren: './github/github.module#GithubModule'}
 ];
 
 @NgModule({
