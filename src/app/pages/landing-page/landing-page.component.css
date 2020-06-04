@@ -76,6 +76,25 @@
   padding-top: 25px;
   text-align: center;
 }
+
+.code-demo {
+  background-color: rgb(219, 219, 219);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 35px 0px;
+}
+
+.code-img {
+  width: 620px;
+}
+
+.github-img {
+  width: 350px;
+}
+
 @media (max-width: 600px) {
   #main {
     min-height: 100%;
@@ -84,7 +103,7 @@
 
 @media (max-width: 1150px) {
   .logo {
-    width: 350px;
+    width: 450px;
   }
 
   .important {
@@ -109,10 +128,57 @@
     color: #7289DA;
     cursor: pointer;
   }
+  .code-demo {
+    flex-direction: column;
+  }
+  .code-img {
+    display: none;
+  }
+  .github-img {
+    
+  }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 854px) {
+  .faq-title {
+    font-size: 48px;
+    padding-bottom: 20px;
+  }
+  .article-faq h2 {
+    font-size: 32px;
+  }
+  .article-faq {
+    width: 90%;
+    padding: 0;
+  }
+  .instructions {
+    height: 100vh;
+  }
+}
+@media (max-width: 628px) {
   .logo {
-    width: 200px;
+    width: 250px;
+  }
+
+  .instructions {
+    height: 100%;
+    padding-bottom: 50px;
+  }
+  .important {
+    margin-top: 75px;
+  }
+  .github-img {
+    width: 80%;
+    padding-top: 0;
+  }
+  .faq-title {
+    font-size: 42px;
+  }
+  .article-faq h2 {
+    font-size: 20px;
+  }
+  .article-faq {
+    width: 90%;
+    padding: 0;
   }
 }

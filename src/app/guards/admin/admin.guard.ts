@@ -11,7 +11,7 @@ export class AdminGuard implements CanActivate {
 
   authed: BehaviorSubject<User> = new BehaviorSubject(undefined);
   constructor(private router: Router, private auth: AuthService) {
-    
+
   }
 
   async canActivate(

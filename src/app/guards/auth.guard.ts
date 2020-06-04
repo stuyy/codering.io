@@ -4,7 +4,6 @@ import { AuthService } from '../services/auth.service';
 import { User } from '../models/User';
 import { BehaviorSubject } from 'rxjs';
 
-
 @Injectable({
   providedIn: 'root'
 })
