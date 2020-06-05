@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-navigator',
@@ -7,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardNavigatorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
   }
 
+  navigatePullRequest() {
+    this.router.navigate(['/pullrequest'])
+  }
+
+  navigateApprovedPullRequest() {
+    this.router.navigate(['/'])
+  }
 }
