@@ -81,6 +81,7 @@ app-dashboard-navigator {
   margin: 0 auto;
   margin-top: 20px;
   width: 70.5%;
+  margin-bottom: 20px;
 }
 
 .spinner-container {
@@ -119,6 +120,17 @@ mat-spinner {
   }
 }
 
+@media (max-width: 500px) {
+  .user-card-container {
+    width: 98%;
+  }
+  .statistics-container {
+    width: 98%;
+  }
+  .search-bar-container {
+    width: 98%;
+  }
+}
 @media (min-width: 2000px) {
   .main-top {
     width: 1920px;

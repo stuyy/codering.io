@@ -8,8 +8,18 @@
       <section class="search-bar-container">
         <mat-form-field appearance="outline">
           <mat-label>Search For User</mat-label>
-          <input type="text" name="search" matInput [formControl]="query">
+          <input
+            type="text"
+            name="search"
+            matInput
+            [formControl]="query"
+            [matAutocomplete]="auto">
         </mat-form-field>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let user of cachedUsers" [value]="user.username">
+            {{user.username}}
+          </mat-option>
+        </mat-autocomplete>
         <button mat-fab color="primary" (click)="search()" [disabled]="showProgressBar">
           <mat-icon>search</mat-icon>
         </button>

@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { GithubModule } from './github/github.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatAutocompleteModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

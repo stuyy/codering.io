@@ -59,16 +59,29 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.query.disable();
     this.userService.getUser(value)
       .subscribe((user: User) => {
-        console.log(user);
-        this.showProgressBar = false;
-        this.query.enable();
+        this.searchAndUpdateCache(user);
+        setTimeout(() => {
+          this.showProgressBar = false;
+          this.query.enable();
+        }, 500)
       }, (err) => {
         console.log(err);
-        this.showProgressBar = false;
-        this.query.enable();
+        setTimeout(() => {
+          this.showProgressBar = false;
+          this.query.enable();
+        }, 500)
       });
   }
 
+  private searchAndUpdateCache(user: User): void {
+    const cached = this.cachedUsers.some((u: User) => u.username === user.username);
+    if (!cached) {
+      if (this.cachedUsers.length === 5) {
+        this.cachedUsers.shift();
+        this.cachedUsers.push(user);
+      } else this.cachedUsers.push(user);
+    }
+  }
   ngOnDestroy(): void {
     this.auth$.unsubscribe();
     console.log('Unsubscribed');
