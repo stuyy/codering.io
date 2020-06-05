@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user/user.service';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -27,13 +29,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   public loading: boolean = true;
   public user: User;
+  public query: FormControl;
   private auth$: Subscription;
+  public showProgressBar = false;
+  public cachedUsers: User[] = [];
 
   constructor(
-    private auth: AuthService,
+    private userService: UserService,
     private router: Router,
     private guard: AuthGuard) {
-      
+      this.query = new FormControl('');
     }
 
   ngOnInit(): void {
@@ -49,7 +54,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    console.log('Searching...');
+    const { value } = this.query;
+    this.showProgressBar = true;
+    this.query.disable();
+    this.userService.getUser(value)
+      .subscribe((user: User) => {
+        console.log(user);
+        this.showProgressBar = false;
+        this.query.enable();
+      }, (err) => {
+        console.log(err);
+        this.showProgressBar = false;
+        this.query.enable();
+      });
   }
 
   ngOnDestroy(): void {

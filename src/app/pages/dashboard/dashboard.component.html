@@ -2,14 +2,15 @@
   <div *ngIf="loading" class="spinner-container">
     <mat-spinner></mat-spinner>
   </div>
+  <mat-progress-bar *ngIf="showProgressBar" mode="indeterminate"></mat-progress-bar>
   <div [@fadeInOut]="!loading ? 'open' : 'closed'">
     <section class="main-top">
       <section class="search-bar-container">
         <mat-form-field appearance="outline">
           <mat-label>Search For User</mat-label>
-          <input type="text" matInput>
+          <input type="text" name="search" matInput [formControl]="query">
         </mat-form-field>
-        <button mat-fab color="primary" (click)="search()">
+        <button mat-fab color="primary" (click)="search()" [disabled]="showProgressBar">
           <mat-icon>search</mat-icon>
         </button>
       </section>
