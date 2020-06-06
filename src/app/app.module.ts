@@ -28,6 +28,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavService } from './services/sidenav/sidenav.service';
+import { AuthService } from './services/auth.service';
+import { GithubService } from './services/Github/github.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,7 @@ import { SidenavService } from './services/sidenav/sidenav.service';
     MatFormFieldModule,
     MatSidenavModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, SidenavService, AuthService, GithubService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

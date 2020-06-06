@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdministratorComponent } from './administrator.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 describe('AdministratorComponent', () => {
   let component: AdministratorComponent;
@@ -8,7 +10,8 @@ describe('AdministratorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdministratorComponent ]
+      declarations: [ AdministratorComponent, HttpClientTestingModule],
+      providers: [AuthGuard]
     })
     .compileComponents();
   }));

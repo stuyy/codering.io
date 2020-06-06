@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PullRequestComponent } from './pull-request.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { GithubService } from 'src/app/services/Github/github.service';
 
 describe('PullRequestComponent', () => {
   let component: PullRequestComponent;
@@ -8,7 +10,8 @@ describe('PullRequestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PullRequestComponent ]
+      declarations: [ PullRequestComponent, HttpClientTestingModule ],
+      providers: [GithubService]
     })
     .compileComponents();
   }));
