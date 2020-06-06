@@ -17,18 +17,14 @@ export class SidenavComponent implements OnInit {
   public currentPath: string;
   constructor(private sidenavService: SidenavService, private auth: AuthService) { }
   ngOnInit() {
-    // fromEvent(window, 'resize')
-    //   .pipe(pluck('target', 'outerWidth'))
-    //   .subscribe((width) => {
-    //     if (width >= 850 && this.sidenavService.isOpen)
-    //       this.sidenavService.close();
-    //   });
+
   }
   ngAfterViewInit() {
     console.log("Sidenav was injected.")
     this.sidenavService.setSidenav(this.sidenav);
   }
-  closeSidenav() {
+  close() {
+    console.log('Closing');
     this.sidenavService.close();
   }
 

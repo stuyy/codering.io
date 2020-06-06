@@ -1,12 +1,13 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
-import { Subscription } from 'rxjs';
+import { Subscription, fromEvent, Observable } from 'rxjs';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,7 +26,7 @@ import { FormControl, FormBuilder, Validators } from '@angular/forms';
     ])
   ]
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public loading: boolean = true;
   public user: User;
@@ -33,15 +34,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private auth$: Subscription;
   public showProgressBar = false;
   public cachedUsers: User[] = [];
-
+  public hamburgerMenuClicked: boolean = true;
+  
   constructor(
     private userService: UserService,
     private router: Router,
-    private guard: AuthGuard) {
+    private guard: AuthGuard,
+    private sidenav: SidenavService) {
       this.query = new FormControl('');
     }
 
   ngOnInit(): void {
+    
+    const overlay = document.getElementById('overlay');
+    this.hamburgerMenuClicked = false;
     this.auth$ = this.guard.authed.asObservable().subscribe((user) => {
       setTimeout(() => {
         this.loading = false;
@@ -51,6 +57,22 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.loading = false;
       this.router.navigate(['/']);
     });
+
+    this.sidenav.sidenavEvents.subscribe((opened: boolean) => {
+      if (opened) {
+        this.hamburgerMenuClicked = true;
+        overlay.style.display = 'block';
+      } else {
+        this.hamburgerMenuClicked = false;
+        overlay.style.display = 'none';
+      }
+    });
+    
+    fromEvent(overlay, 'click')
+      .subscribe((event) => {
+        console.log(event);
+        this.sidenav.close();
+      });
   }
 
   search() {
@@ -82,8 +104,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
       } else this.cachedUsers.push(user);
     }
   }
+
+  ngAfterViewInit(): void {
+    
+  }
+  
   ngOnDestroy(): void {
     this.auth$.unsubscribe();
     console.log('Unsubscribed');
+  }
+
+  createOverlayObservable() {
+    
   }
 }

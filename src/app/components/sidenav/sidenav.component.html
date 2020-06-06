@@ -1,9 +1,10 @@
-<mat-sidenav #side position="end">
+<mat-sidenav #side position="end" [disableClose]="true">
   <mat-sidenav-container>
     <nav>
       <ul class="navigation-list">
-        <li>GitHub</li>
-        <li>Pull Requests</li>
+        <li routerLink="dashboard" (click)="close()">Dashboard</li>
+        <li routerLink="github" (click)="close()">GitHub</li>
+        <li routerLink="github/pullrequest" (click)="close()">Pull Requests</li>
         <li>Issues</li>
         <li>Leaderboards</li>
         <li>Discord</li>

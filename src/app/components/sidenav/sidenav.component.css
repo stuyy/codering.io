@@ -17,8 +17,13 @@
   padding: 25px 25px 15px 35px;
   text-align: left;
   color: white;
+  outline: none;
 }
 nav {
   margin: 0;
   padding: 0;
+}
+
+.navigation-list li:hover {
+  cursor: pointer;
 }
