@@ -1,0 +1,24 @@
+.mat-sidenav {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  background-color: #424242;
+}
+
+.navigation-list {
+  list-style-type: none;
+  padding: 0;
+  background-color: #424242;
+  margin: 0;
+  padding-top: 50px;
+}
+
+.navigation-list li {
+  padding: 25px 25px 15px 35px;
+  text-align: left;
+  color: white;
+}
+nav {
+  margin: 0;
+  padding: 0;
+}

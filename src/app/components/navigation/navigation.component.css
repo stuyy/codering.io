@@ -1,5 +1,5 @@
 .mat-toolbar {
-  justify-content: space-evenly;
+  justify-content: space-between;
   font-family: 'Jost';
 }
 
@@ -28,4 +28,9 @@
 
 #discord:hover {
   color: rgb(146, 169, 251);
+}
+
+.mat-raised-button {
+  min-width: unset;
+  padding: 0 10px;
 }

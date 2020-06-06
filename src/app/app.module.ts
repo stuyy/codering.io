@@ -25,6 +25,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavService } from './services/sidenav/sidenav.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     UserProfileComponent,
     DashboardNavigatorComponent,
     StatisticsComponent,
-    AdministratorComponent
+    AdministratorComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatAutocompleteModule,
     MatTableModule,
     MatFormFieldModule,
+    MatSidenavModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
