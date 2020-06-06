@@ -1,7 +1,7 @@
 <div>
   <mat-card>
     <mat-card-header>
-      <div mat-card-avatar
+      <div mat-card-avatar class="card-avatar"
         [style.backgroundImage]="'url(' + userData.avatar_url + ')'"
         [style.backgroundSize]="'cover'">
       </div>
@@ -13,9 +13,11 @@
       </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <h2>You opened a Pull Request for {{repository.name}}</h2>
+      <section class="title-container">
+        <h2>You opened a Pull Request for {{repository.name}}</h2>
+        <h2>Created on: {{prData.created_at | date: 'medium' }}</h2>
+      </section>
       <h3>Status: {{pullRequest.state}}</h3>
-      <h3>Created on: {{prData.created_at | date: 'medium' }}</h3>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button (click)="navigate()">View Pull Request</button>

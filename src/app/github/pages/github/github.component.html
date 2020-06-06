@@ -1,0 +1,37 @@
+<div class="main">
+  <section class="table-wrapper">
+    <mat-table [dataSource]="pullRequests" class="mat-elevation-z8" style="
+width: 100%">
+    <ng-container matColumnDef="User">
+      <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+      <mat-cell *matCellDef="let pr">
+        <img [src]="pr.pullRequestUserData.avatar_url" class="avatar">
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+      <mat-cell *matCellDef="let pr">
+        {{pr.pullRequestUserData.login}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PR #">
+      <mat-header-cell *matHeaderCellDef>Pull Request</mat-header-cell>
+      <mat-cell *matCellDef="let pr"> {{pr.number}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Repository" *ngIf="!mobile">
+      <mat-header-cell *matHeaderCellDef>Repository</mat-header-cell>
+      <mat-cell *matCellDef="let pr"> {{pr.repository.name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="State">
+      <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+      <mat-cell *matCellDef="let pr"> {{pr.state}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Date" *ngIf="!mobile">
+      <mat-header-cell *matHeaderCellDef>Date Created</mat-header-cell>
+      <mat-cell *matCellDef="let pr"> {{pr.pullRequestData.created_at | date: 'medium' }} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="data"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: data;"></mat-row>
+  </mat-table>
+  </section>
+</div>

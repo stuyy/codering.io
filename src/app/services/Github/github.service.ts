@@ -14,4 +14,7 @@ export class GithubService {
   public getPullRequests(): Observable<PullRequest[]> {
     return this.http.get<PullRequest[]>(`${environment.host}/github/pull-request`, { withCredentials: true });
   }
+  public getAllPullRequests(): Observable<PullRequest[]> {
+    return this.http.get<PullRequest[]>(`${environment.host}/github/pull-request/users/all`, { withCredentials: true });
+  }
 }
