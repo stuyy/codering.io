@@ -2,12 +2,28 @@
   <mat-sidenav-container>
     <nav>
       <ul class="navigation-list">
-        <li routerLink="dashboard" (click)="close()">Dashboard</li>
-        <li routerLink="github" (click)="close()">GitHub</li>
-        <li routerLink="github/pullrequest" (click)="close()">Pull Requests</li>
-        <li>Issues</li>
-        <li>Leaderboards</li>
-        <li>Discord</li>
+        <li *ngIf="!user" (click)="loginGitHub()">Login</li>
+        <li
+          *ngFor="let route of routes"
+          [routerLink]="route.path"
+          (click)="close()">{{route.name}}</li>
+        <ng-container *ngIf="user && user.roles.includes('ADMINISTRATOR');">
+          <ng-container *ngFor="let admin of adminRoutes">
+            <li [routerLink]="admin.path" (click)="close()">{{admin.name}}</li>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="user && user.roles.includes('USER')">
+          <li
+            *ngFor="let route of authorizedRoutes"
+            [routerLink]="route.path"
+            (click)="close()">
+            {{route.name}}
+          </li>
+        </ng-container>
+        <li *ngFor="let route of linkRoutes">
+          <a [href]="route.url">{{route.name}}</a>
+        </li>
+        <li *ngIf="user" (click)="logout()">Logout</li>
       </ul>
     </nav>
   </mat-sidenav-container>
