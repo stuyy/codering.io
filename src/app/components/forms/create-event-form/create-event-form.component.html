@@ -1,0 +1,102 @@
+<div>
+  <form [formGroup]="event">
+    <section class="event-name-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Event Name</mat-label>
+        <input
+          maxlength="50"
+          type="text"
+          matInput
+          formControlName="eventName">
+          <mat-error *ngIf="event.invalid">{{getErrorMessage('name')}}</mat-error>
+      </mat-form-field>
+    </section>
+    <section class="date-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          formControlName="startDate"
+          [min]="minDate"
+          [max]="maxDate"
+          [matDatepicker]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+        <mat-datepicker #startDate></mat-datepicker>
+        <mat-error *ngIf="event.invalid">{{getErrorMessage('start')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>End Date</mat-label>
+        <input
+          matInput
+          formControlName="endDate"
+          [min]="minDate"
+          [matDatepicker]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+        <mat-datepicker #endDate></mat-datepicker>
+        <mat-error *ngIf="event.invalid">{{getErrorMessage('end')}}</mat-error>
+      </mat-form-field>
+    </section>
+    <h2>Points</h2>
+    <section class="points-container">
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>Pull Request</mat-label>
+          <input
+            matInput type="number"
+            formControlName="pr"
+            min="1"
+            max="10">
+          <span matSuffix>pts</span>
+          <mat-error *ngIf="event.invalid">{{getErrorMessage('pr')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Issues</mat-label>
+          <input
+            matInput 
+            type="number"
+            formControlName="issue"
+            min="1"
+            max="10">
+          <span matSuffix>pts</span>
+          <mat-error *ngIf="event.invalid">{{getErrorMessage('issue')}}</mat-error>
+        </mat-form-field>
+      </section>
+      <section>
+        <mat-form-field appearance="fill">
+          <mat-label>Comments</mat-label>
+          <input
+            matInput
+            type="number" 
+            formControlName="comment"
+            min="1" 
+            max="10">
+          <span matSuffix>pts</span>
+          <mat-error *ngIf="event.invalid">{{getErrorMessage('comment')}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Pull Request Merge</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="merge"
+            min="1"
+            max="10">
+          <span matSuffix>pts</span>
+          <mat-error *ngIf="event.invalid">{{getErrorMessage('merge')}}</mat-error>
+        </mat-form-field>
+      </section>
+    </section>
+    <h2>Search Repository</h2>
+    <section class="repository-container">
+      <mat-form-field appearance="outline">
+        <mat-label>Repository</mat-label>
+        <mat-select formControlName="selectedRepo" name="repo">
+          <mat-option *ngFor="let repo of repositories" [value]="repo.name">
+            {{repo.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <button mat-raised-button (click)="submit()" [disabled]="event.invalid">Create Event</button>
+  </form>
+</div>

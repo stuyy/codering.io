@@ -1,0 +1,33 @@
+.event-name-container .mat-form-field {
+  width: 100%;
+}
+
+.date-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-container .mat-form-field {
+  width: 49.8%;
+}
+
+.points-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.points-container section {
+  display: flex;
+  justify-content: space-between;
+}
+.points-container section .mat-form-field {
+  width: 49.8%;
+}
+
+button {
+  width: 100%;
+}
+
+.repository-container .mat-form-field {
+  width: 100%;
+}

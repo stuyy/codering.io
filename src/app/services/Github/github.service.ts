@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { PullRequest } from 'src/app/models/PullRequest';
+import { Repository } from 'src/app/models/Repository';
+import { pluck } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +18,11 @@ export class GithubService {
   }
   public getAllPullRequests(): Observable<PullRequest[]> {
     return this.http.get<PullRequest[]>(`${environment.host}/github/pull-request/users/all`, { withCredentials: true });
+  }
+
+  public fetchGithubRepositories(username: string): Observable<Repository[]> {
+    return this.http
+      .get<Repository[]>(`https://api.github.com/search/repositories?q=user:${username}+sort:updated&per_page=100`)
+      .pipe(pluck('items'));
   }
 }

@@ -30,7 +30,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavService } from './services/sidenav/sidenav.service';
 import { AuthService } from './services/auth.service';
 import { GithubService } from './services/Github/github.service';
-
+import { CreateEventDialogComponent } from './components/dialogs/create-event-dialog/create-event-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CreateEventFormComponent } from './components/forms/create-event-form/create-event-form.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,9 @@ import { GithubService } from './services/Github/github.service';
     DashboardNavigatorComponent,
     StatisticsComponent,
     AdministratorComponent,
-    SidenavComponent
+    SidenavComponent,
+    CreateEventDialogComponent,
+    CreateEventFormComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +69,20 @@ import { GithubService } from './services/Github/github.service';
     MatAutocompleteModule,
     MatTableModule,
     MatFormFieldModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
-  providers: [AuthGuard, SidenavService, AuthService, GithubService],
+  providers: [
+    AuthGuard,
+    SidenavService,
+    AuthService,
+    GithubService,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
