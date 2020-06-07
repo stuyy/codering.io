@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GithubService } from 'src/app/services/Github/github.service';
-import { PullRequest, PullRequestUserData, Repository, PullRequestData } from 'src/app/models/PullRequest';
-import { Observable, fromEvent } from 'rxjs';
-import { User } from 'src/app/models/User';
+import { PullRequest } from 'src/app/models/PullRequest';
+import { fromEvent, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { takeUntil } from 'rxjs/operators';
+import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
 
 @Component({
   selector: 'app-pull-request',
   templateUrl: './pull-request.component.html',
   styleUrls: ['./pull-request.component.css']
 })
-export class PullRequestComponent implements OnInit {
+export class PullRequestComponent implements OnInit, OnDestroy {
 
   public pullRequests: PullRequest[];
   public displayedColumns = ['User', 'Username', 'PR #', 'Repository', 'State', 'Date'];
@@ -18,22 +19,44 @@ export class PullRequestComponent implements OnInit {
   public data = this.displayedColumns;
   public mobile: boolean = false;
   public filterForm: FormControl;
+  public destroyed$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private github: GithubService) {
+  constructor(private github: GithubService, private sidenav: SidenavService) {
     this.filterForm = new FormControl('');
   }
 
   ngOnInit(): void {
+    const overlay = document.getElementById('overlay3');
     this.handleResponsive();
     this.github.getPullRequests()
+      .pipe(takeUntil(this.destroyed$))
       .subscribe((pullRequests: PullRequest[]) => {
         this.pullRequests = pullRequests;
-      });
+      }, (err) => console.log(err));
+      
     fromEvent(window, 'resize')
-      .subscribe((event) => {
-        this.handleResponsive();
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(() => this.handleResponsive());
+    
+    this.sidenav.sidenavEvents
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((opened: boolean) => {
+        if (opened) overlay.style.display = 'block';
+        else overlay.style.display = 'none';
       });
+
+    fromEvent(overlay, 'click')
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(() => this.sidenav.close());
+  
   }
+
+  ngOnDestroy(): void {
+    console.log('Destroying PullRequestComponent');
+    this.destroyed$.next(true);
+    this.destroyed$.unsubscribe();
+  }
+
   private handleResponsive() {
     if (window.innerWidth <= 600) {
       this.data = this.mobileColumns;

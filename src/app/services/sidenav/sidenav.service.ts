@@ -18,18 +18,17 @@ export class SidenavService {
   }
 
   open() {
-    console.log('Closing');
     this.sidenav.open();
     this.isOpen = true;
   }
   close() {
-    console.log('Closing');
     this.sidenav.close();
     this.isOpen = false;
     this.sidenavEvents.next(this.isOpen);
   }
   toggle() {
     this.sidenav.toggle();
+    console.log(this.isOpen);
     if (this.isOpen) {
       this.isOpen = !this.isOpen;
       this.sidenavEvents.next(this.isOpen);

@@ -6,24 +6,15 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
-import { FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
+import { fadeInOut } from 'src/app/animations/animations';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   animations: [
-    trigger('fadeInOut', [
-      state('open', style({
-        opacity: '100%'
-      })),
-      state('closed', style({
-        opacity: '0%'
-      })),
-      transition('closed => open', [
-        animate('.5s ease-in-out')
-      ]),
-    ])
+    fadeInOut
   ]
 })
 export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -59,6 +50,8 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     this.sidenav.sidenavEvents.subscribe((opened: boolean) => {
+      console.log(opened);
+      console.log(overlay)
       if (opened) {
         this.hamburgerMenuClicked = true;
         overlay.style.display = 'block';
@@ -111,7 +104,6 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
   
   ngOnDestroy(): void {
     this.auth$.unsubscribe();
-    console.log('Unsubscribed');
   }
 
   createOverlayObservable() {

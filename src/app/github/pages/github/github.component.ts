@@ -1,69 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PullRequest } from 'src/app/models/PullRequest';
 import { FormControl } from '@angular/forms';
 import { GithubService } from 'src/app/services/Github/github.service';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
+import { Router } from '@angular/router';
+import { fadeInOut } from 'src/app/animations/animations';
 
 @Component({
   selector: 'app-github',
   templateUrl: './github.component.html',
-  styleUrls: ['./github.component.css']
+  styleUrls: ['./github.component.css'],
+  animations: [
+    fadeInOut,
+  ]
 })
-export class GithubComponent implements OnInit {
+export class GithubComponent implements OnInit, OnDestroy {
 
+  public loading: boolean = true;
   public pullRequests: PullRequest[] = [];
   public displayedColumns = ['User', 'Username', 'PR #', 'Repository', 'State', 'Date'];
   public mobileColumns = ['User', 'PR #', 'State'];
   public data = this.displayedColumns;
   public mobile: boolean = false;
   public filterForm: FormControl;
-  public hamburgerMenuClicked = false;
   public startPosition = 0;
-  constructor(private github: GithubService, private sidenav: SidenavService) {
+  public sidenavSubscription: Subscription;
+  constructor(
+    private github: GithubService,
+    private sidenav: SidenavService,
+    private router: Router) {
     this.filterForm = new FormControl('');
   }
 
   ngOnInit(): void {
-
-    console.log(window.innerHeight + window.scrollY);
-    console.log(document.body.offsetHeight)
-
-    const overlay = document.getElementById('overlay');
+    const overlay = document.getElementById('overlay2');
     this.handleResponsive();
-    this.github.getAllPullRequests()
-      .subscribe((pullRequests: PullRequest[]) => {
+    this.github.getAllPullRequests().subscribe((pullRequests: PullRequest[]) => {
+      setTimeout(() => {
         this.pullRequests = pullRequests;
-      });
+        this.loading = false;
+      }, 300);
+    }, (err) => {
+      this.loading = false;
+      console.log(err);
+    });
   
-    fromEvent(window, 'resize')
-      .subscribe((event) => {
-        this.handleResponsive();
-      });
+    fromEvent(window, 'resize').subscribe((event) => {
+      this.handleResponsive();
+    }, (err) => console.log(err));
   
-    this.sidenav.sidenavEvents.subscribe((opened: boolean) => {
-      if (opened) {
-        this.hamburgerMenuClicked = true;
-        overlay.style.display = 'block';
-      } else {
-        this.hamburgerMenuClicked = false;
-        overlay.style.display = 'none';
-      }
+    this.sidenavSubscription = this.sidenav.sidenavEvents.subscribe((opened: boolean) => {
+      if (opened) overlay.style.display = 'block';
+      else overlay.style.display = 'none';
     });
     
-    fromEvent(overlay, 'click')
-      .subscribe((event) => {
-        console.log(event);
-        this.sidenav.close();
-      });
+    fromEvent(overlay, 'click').subscribe((event) => {
+      console.log(event);
+      this.sidenav.close();
+    }, (err) => console.log(err));
     
-    fromEvent(window, 'scroll')
-      .subscribe((event) => {
-        if (this.isScrollingDown() && this.atBottomOfPage()) {
-          console.log('At the bottom!')
-          // this.pullRequests = this.pullRequests.concat(this.pullRequests)
-        }
-      })
+    fromEvent(window, 'scroll').subscribe((event) => {
+      if (this.isScrollingDown() && this.atBottomOfPage()) {
+        console.log('At the bottom!')
+        // this.pullRequests = this.pullRequests.concat(this.pullRequests)
+      }
+    }, (err) => console.log(err));
+  }
+
+  ngOnDestroy(): void {
+    this.sidenavSubscription.unsubscribe();
+    console.log('Unsubscribed GitHub');
   }
   
   private handleResponsive() {

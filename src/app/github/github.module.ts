@@ -9,7 +9,7 @@ import { PullRequestItemComponent } from './components/pull-request-item/pull-re
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [PullRequestComponent, GithubComponent, PullRequestItemComponent],
   imports: [
@@ -20,7 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTableModule,
     ReactiveFormsModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatProgressSpinnerModule
   ],
   exports: [PullRequestComponent]
 })

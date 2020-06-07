@@ -20,12 +20,10 @@ export class SidenavComponent implements OnInit {
 
   }
   ngAfterViewInit() {
-    console.log("Sidenav was injected.")
     this.sidenavService.setSidenav(this.sidenav);
   }
   close() {
-    console.log('Closing');
-    this.sidenavService.close();
+    this.sidenavService.toggle();
   }
 
 }
