@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+:root {
+  --main-bg-color: rgb(88, 90, 87);
+}
 html, body { height: 100%; }
 body::-webkit-scrollbar {
   display: none;

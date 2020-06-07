@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
       setTimeout(() => {
         this.loading = false;
         this.user = user;
+        console.log(this.user);
       }, 300)
     }, (err) => {
       this.loading = false;
