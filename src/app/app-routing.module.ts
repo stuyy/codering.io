@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'administrator', component: AdministratorComponent, canActivate: [ AuthGuard, AdminGuard ]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ]},
-  { path: 'github', loadChildren: './github/github.module#GithubModule' }
+  { path: 'github', loadChildren: () => import('./github/github.module').then(m => m.GithubModule) }
 ];
 
 @NgModule({

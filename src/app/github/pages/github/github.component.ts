@@ -20,7 +20,7 @@ export class GithubComponent implements OnInit, OnDestroy {
   public loading: boolean = true;
   public pullRequests: PullRequest[] = [];
   public displayedColumns = ['User', 'Username', 'PR #', 'Repository', 'State', 'Date'];
-  public mobileColumns = ['User', 'PR #', 'State'];
+  public mobileColumns = ['User', 'PR #', 'State', 'Date'];
   public data = this.displayedColumns;
   public mobile: boolean = false;
   public filterForm: FormControl;
@@ -74,7 +74,7 @@ export class GithubComponent implements OnInit, OnDestroy {
   }
   
   private handleResponsive() {
-    if (window.innerWidth <= 650) {
+    if (window.innerWidth <= 500) {
       this.data = this.mobileColumns;
       this.mobile = true;
     } else {

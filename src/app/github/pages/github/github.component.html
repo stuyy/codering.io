@@ -16,7 +16,7 @@
         <img [src]="pr.pullRequestUserData.avatar_url" class="avatar">
       </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Username">
+    <ng-container matColumnDef="Username" >
       <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
       <mat-cell *matCellDef="let pr">
         {{pr.pullRequestUserData.login}}
@@ -34,12 +34,16 @@
       <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
       <mat-cell *matCellDef="let pr"> {{pr.state}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="Date" *ngIf="!mobile">
+    <ng-container matColumnDef="Date">
       <mat-header-cell *matHeaderCellDef>Date Created</mat-header-cell>
-      <mat-cell *matCellDef="let pr"> {{pr.pullRequestData.created_at | date: 'medium' }} </mat-cell>
+      <mat-cell *matCellDef="let pr">
+        {{pr.pullRequestData.created_at | date: 'E M/d' }}<br>
+        {{pr.pullRequestData.created_at | date: 'hh:mm:ss a'}}
+      </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="data"></mat-header-row>
     <mat-row *matRowDef="let row; columns: data;"></mat-row>
+    <mat-footer-row  *matFooterCellDef>End</mat-footer-row >
   </mat-table>
   </section>
 </div>
