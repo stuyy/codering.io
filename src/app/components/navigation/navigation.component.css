@@ -1,7 +1,7 @@
 .mat-toolbar {
   justify-content: space-between;
   font-family: 'Jost';
-  z-index: 99999999;
+  position: relative;
 }
 
 #login i {
