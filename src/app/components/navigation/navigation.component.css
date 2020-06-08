@@ -35,3 +35,9 @@
   min-width: unset;
   padding: 0 10px;
 }
+
+.side {
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
+}

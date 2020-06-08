@@ -127,24 +127,23 @@ mat-spinner {
     margin-top: -40px;
     display: none;
   }
+  .search-bar-container {
+    width: 80%;
+  }
   .statistics-container {
     width: 80%;
     margin-top: 10px;
   }
-  .search-bar-container {
-    width: 80%;
-  }
 }
-
-@media (max-width: 500px) {
+@media (max-width: 768px) {
+  .user-card-container, .statistics-container, .search-bar-container {
+    width: 99%;
+  }
+  .main-top {
+    padding-top: 5px;
+  }
   .user-card-container {
-    width: 98%;
-  }
-  .statistics-container {
-    width: 98%;
-  }
-  .search-bar-container {
-    width: 98%;
+    padding-top: 0px;
   }
 }
 @media (min-width: 2000px) {

@@ -21,7 +21,7 @@
           </li>
         </ng-container>
         <li *ngFor="let route of linkRoutes">
-          <a [href]="route.url">{{route.name}}</a>
+          <a [href]="route.url" target="_blank">{{route.name}}</a>
         </li>
         <li *ngIf="user" (click)="logout()">Logout</li>
       </ul>

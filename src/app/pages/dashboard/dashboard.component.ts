@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
   public showProgressBar = false;
   public cachedUsers: User[] = [];
   public hamburgerMenuClicked: boolean = true;
-  
+
   constructor(
     private userService: UserService,
     private router: Router,
