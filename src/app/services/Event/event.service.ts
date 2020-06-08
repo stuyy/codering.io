@@ -12,6 +12,6 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   public createEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(`${environment.host}/event`, event, { withCredentials: true });
+    return this.http.post<Event>(`${environment.host}/events`, event, { withCredentials: true });
   }
 }

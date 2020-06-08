@@ -91,14 +91,16 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
     } else {
       const { eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo } = this.event.value;
       console.log(eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo);
+      const repository = this.getRepository(selectedRepo);
       const event: Event = {
-        creator: this.adminUser,
+        creatorId: this.adminUser.githubId,
         startDate,
         endDate,
         pullRequestPoints: pr,
         issuePoints: issue,
         commentsPoints: comment,
         mergedPullRequestPoints: merge,
+        repository
       };
       this.event.disable();
       this.loading = true;
@@ -117,6 +119,9 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
     }
   }
 
+  getRepository(name: string) {
+    return this.repositories.find((repo: Repository) => repo.name === name);
+  }
   getErrorMessage(type: string) {
     switch (type) {
       case 'name':

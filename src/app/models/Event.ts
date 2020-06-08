@@ -1,4 +1,5 @@
 import { User } from './User';
+import { Repository } from '../models/Repository';
 
 export enum EventStatus {
   OPENED = 'opened',
@@ -8,9 +9,8 @@ export enum EventStatus {
 
 export interface Event {
   _id?: string;
-  repositoryId?: string;
   status?: EventStatus;
-  creator: User;
+  creatorId: string;
   startDate: Date;
   endDate: Date;
   pullRequestPoints: number;
@@ -18,4 +18,5 @@ export interface Event {
   commentsPoints: number;
   mergedPullRequestPoints: number;
   winner?: User;
+  repository: Repository;
 }
