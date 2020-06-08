@@ -35,10 +35,10 @@
       <mat-cell *matCellDef="let pr"> {{pr.state}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="Date">
-      <mat-header-cell *matHeaderCellDef>Date Created</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Last Updated</mat-header-cell>
       <mat-cell *matCellDef="let pr">
-        {{pr.pullRequestData.created_at | date: 'E M/d' }}<br>
-        {{pr.pullRequestData.created_at | date: 'hh:mm:ss a'}}
+        {{pr.pullRequestData.updated_at | date: 'E M/d' }}<br>
+        {{pr.pullRequestData.updated_at | date: 'hh:mm:ss a'}}
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="data"></mat-header-row>
