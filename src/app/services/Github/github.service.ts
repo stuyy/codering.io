@@ -20,6 +20,10 @@ export class GithubService {
     return this.http.get<PullRequest[]>(`${environment.host}/github/pull-request/users/all`, { withCredentials: true });
   }
 
+  public getLimitedPullRequests(skip: number): Observable<{ count: number, results: PullRequest[] }> {
+    return this.http.get<{ count: number, results: PullRequest[] }>(`${environment.host}/github/pull-request/users/all?count=${skip} `)
+  }
+
   public fetchGithubRepositories(username: string): Observable<Repository[]> {
     return this.http
       .get<Repository[]>(`https://api.github.com/search/repositories?q=user:${username}+sort:updated&per_page=100`)

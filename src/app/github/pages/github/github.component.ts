@@ -26,6 +26,9 @@ export class GithubComponent implements OnInit, OnDestroy {
   public filterForm: FormControl;
   public startPosition = 0;
   public sidenavSubscription: Subscription;
+  public endOfResults: boolean = false;
+  public loadingApiCall: boolean = false;
+
   constructor(
     private github: GithubService,
     private sidenav: SidenavService,
@@ -36,16 +39,17 @@ export class GithubComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const overlay = document.getElementById('overlay2');
     this.handleResponsive();
-    this.github.getAllPullRequests().subscribe((pullRequests: PullRequest[]) => {
-      setTimeout(() => {
-        this.pullRequests = pullRequests;
+    this.github.getLimitedPullRequests(0)
+      .subscribe((result) => {
+        setTimeout(() => {
+          this.pullRequests = result.results;
+          this.loading = false;
+        }, 300);
+      }, (err) => {
         this.loading = false;
-      }, 300);
-    }, (err) => {
-      this.loading = false;
-      console.log(err);
-    });
-  
+        console.log(err);
+      });
+    
     fromEvent(window, 'resize').subscribe((event) => {
       this.handleResponsive();
     }, (err) => console.log(err));
@@ -61,9 +65,15 @@ export class GithubComponent implements OnInit, OnDestroy {
     }, (err) => console.log(err));
     
     fromEvent(window, 'scroll').subscribe((event) => {
-      if (this.isScrollingDown() && this.atBottomOfPage()) {
-        console.log('At the bottom!')
-        // this.pullRequests = this.pullRequests.concat(this.pullRequests)
+      if (this.isScrollingDown() && this.atBottomOfPage() && !this.endOfResults) {
+        this.loadingApiCall = true;
+        setTimeout(async () => {
+          const { count, results } = await this.github.getLimitedPullRequests(this.pullRequests.length).toPromise();
+          if (count < 15) this.endOfResults = true;
+          this.pullRequests.push(...results);
+          this.pullRequests = this.pullRequests.slice();
+          this.loadingApiCall = false;
+        }, 1500)
       }
     }, (err) => console.log(err));
   }
@@ -87,16 +97,14 @@ export class GithubComponent implements OnInit, OnDestroy {
     const currentPosition = window.pageYOffset || document.documentElement.scrollTop;
     if (currentPosition > this.startPosition) {
       this.startPosition = currentPosition <= 0 ? 0 : currentPosition;
-      console.log('Scrolling down');
       return true;
     } else {
       this.startPosition = currentPosition <= 0 ? 0 : currentPosition;
-      console.log('Scrolling Up');
       return false;
     }
   }
 
   private atBottomOfPage() {
-    return (window.innerHeight + window.scrollY) >= document.body.scrollHeight;
+    return (Math.ceil(window.innerHeight + window.scrollY)) >= document.body.scrollHeight;
   }
 }
