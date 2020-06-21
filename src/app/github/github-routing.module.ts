@@ -5,7 +5,8 @@ import { GithubComponent } from './pages/github/github.component';
 
 const routes: Routes = [
   { path: '', component: GithubComponent },
-  { path: 'pullrequest', component: PullRequestComponent }
+  { path: 'pullrequest', component: PullRequestComponent },
+  { path: 'pullrequest/:id', component: PullRequestComponent }
 ];
 
 @NgModule({

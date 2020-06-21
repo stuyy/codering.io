@@ -32,6 +32,12 @@ export const authorizedRoutes: Route[] = [
     admin: false,
   },
   {
+    name: 'Events',
+    path: 'events',
+    authorized: true,
+    admin: false,
+  },
+  {
     name: 'Github',
     path: 'github',
     authorized: true,

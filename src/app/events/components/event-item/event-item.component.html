@@ -1,0 +1,23 @@
+<div class="event-item">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <span>{{event.eventName}} - Starts On: {{ event.startDate | date }}</span>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <h2>Status: {{event.status}}</h2>
+      <h2>Point System</h2>
+      <mat-chip-list class="chips-list">
+        <mat-chip>Pull Request: {{event.pullRequestPoints}}</mat-chip>
+        <mat-chip>Merged: {{event.mergedPullRequestPoints}}</mat-chip>
+        <mat-chip>Issue: {{event.issuePoints}}</mat-chip>
+        <mat-chip>Comments: {{event.commentsPoints}}</mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="viewLeaderboards()">View Leaderboards</button>
+      <button mat-raised-button (click)="viewPullRequests()">View Pull Requests</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

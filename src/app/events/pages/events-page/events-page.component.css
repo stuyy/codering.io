@@ -1,0 +1,35 @@
+.events-page {
+  display: flex;
+  flex-wrap: wrap;
+  width: 88%;
+  margin: 0 auto;
+  background-color: #E0E0E0;
+  margin-top: 25px;
+  padding: 25px;
+}
+
+.events-page > app-event-item {
+  flex: 0 50%;
+}
+
+@media (max-width: 1052px) {
+  .events-page {
+    width: 100%;
+    margin-top: 0px;
+    flex-direction: column;
+    padding: 10px 0px 55px 0px;
+    min-height: 100%;
+  }
+}
+
+@media (min-width: 2000px) {
+  .events-page {
+    width: 1920px;
+  }
+}
+
+@media (max-width: 768px) {
+  .events-page {
+    padding-bottom: 70px;
+  }
+}

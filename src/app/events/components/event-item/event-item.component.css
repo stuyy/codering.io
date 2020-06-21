@@ -1,0 +1,57 @@
+.event-item {
+  width: 99%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+mat-card {
+  padding: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+mat-card-content {
+  font-family: 'Jost';
+  padding: 24px;
+  font-size: 20px;
+}
+
+mat-card-header {
+  font-family: 'Jost';
+  background-color: #424242;
+  color: white;
+  padding: 20px 0px 20px 5px;
+  height: 20px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+mat-card-actions {
+  display: flex;
+  background-color: #424242;
+  padding-left: 16px;
+  margin-left: 0;
+  margin-right: 0;
+  height: 50px;
+  align-items: center;
+  align-content: center;
+}
+.mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child, .mat-card-actions .mat-stroked-button:first-child {
+  margin-left: unset;
+}
+.mat-card>.mat-card-actions:last-child {
+  padding-bottom: 8px;
+}
+
+.chips-list > mat-chip {
+  font-size: 16px;
+}
+@media (max-width: 1052px) {
+  .event-item {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-item {
+    width: 95%;
+  }
+}

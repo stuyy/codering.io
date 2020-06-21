@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/Github/github.service';
 import { Repository } from 'src/app/models/Repository';
-import { Event } from 'src/app/models/Event';
+import { GithubEvent } from 'src/app/models/Event';
 import { EventService } from 'src/app/services/Event/event.service';
 
 @Component({
@@ -92,7 +92,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
       const { eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo } = this.event.value;
       console.log(eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo);
       const repository = this.getRepository(selectedRepo);
-      const event: Event = {
+      const event: GithubEvent = {
         creatorId: this.adminUser.githubId,
         startDate,
         endDate,
@@ -100,7 +100,8 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
         issuePoints: issue,
         commentsPoints: comment,
         mergedPullRequestPoints: merge,
-        repository
+        repository,
+        eventName,
       };
       this.event.disable();
       this.loading = true;

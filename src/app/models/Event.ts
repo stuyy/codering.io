@@ -7,9 +7,10 @@ export enum EventStatus {
   PAUSED = 'paused',
 };
 
-export interface Event {
+export interface GithubEvent {
   _id?: string;
   status?: EventStatus;
+  eventName: string;
   creatorId: string;
   startDate: Date;
   endDate: Date;
