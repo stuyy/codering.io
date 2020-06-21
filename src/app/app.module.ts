@@ -37,6 +37,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatChipsModule } from '@angular/material/chips';
+import { EventsModule } from './events/events.module';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     BrowserModule,
     AppRoutingModule,
     GithubModule,
+    EventsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -77,6 +80,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatNativeDateModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatChipsModule
   ],
   providers: [
     AuthGuard,

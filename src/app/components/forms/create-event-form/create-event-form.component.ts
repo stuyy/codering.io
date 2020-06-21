@@ -107,7 +107,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
       this.loading = true;
       this.events.createEvent(event)
         .pipe(takeUntil(this.destroyed$))
-        .subscribe((event: Event) => {
+        .subscribe((event: GithubEvent) => {
           console.log(event);
           this.loading = false;
           this.event.enable();
