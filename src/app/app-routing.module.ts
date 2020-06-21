@@ -9,6 +9,7 @@ import { AdminGuard } from './guards/admin/admin.guard';
 const routes: Routes = [
   { path: '', component: LandingPageComponent },
   { path: 'administrator', component: AdministratorComponent, canActivate: [ AuthGuard, AdminGuard ]},
+  { path: 'events', loadChildren: () => import('./events/events.module').then(m => m.EventsModule) },
   { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ]},
   { path: 'github', loadChildren: () => import('./github/github.module').then(m => m.GithubModule) },
   { path: '**', redirectTo: '' }

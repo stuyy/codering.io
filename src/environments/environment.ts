@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  github: 'http://github.com/login/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9001%2Fapi%2Fauth%2Fgithub%2Fredirect&scope=user&client_id=Iv1.d93739338672561d',
+  github: 'http://github.com/login/oauth/authorize?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A9001%2Fapi%2Fauth%2Fgithub%2Fredirect&scope=user&client_id=Iv1.48998d53e13898a0',
   host: 'http://localhost:9001/api/',
 };
 

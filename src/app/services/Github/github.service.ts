@@ -21,7 +21,7 @@ export class GithubService {
   }
 
   public getLimitedPullRequests(skip: number): Observable<{ count: number, results: PullRequest[] }> {
-    return this.http.get<{ count: number, results: PullRequest[] }>(`${environment.host}/github/pull-request/users/all?count=${skip} `)
+    return this.http.get<{ count: number, results: PullRequest[] }>(`${environment.host}github/pull-request/users/all?count=${skip} `, { withCredentials: true });
   }
 
   public fetchGithubRepositories(username: string): Observable<Repository[]> {
