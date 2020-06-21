@@ -39,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import { EventsModule } from './events/events.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { EventsModule } from './events/events.module';
     MatNativeDateModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthGuard,

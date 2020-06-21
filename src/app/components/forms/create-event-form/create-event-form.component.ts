@@ -8,6 +8,8 @@ import { GithubService } from 'src/app/services/Github/github.service';
 import { Repository } from 'src/app/models/Repository';
 import { GithubEvent } from 'src/app/models/Event';
 import { EventService } from 'src/app/services/Event/event.service';
+import { EventFormDialogService } from 'src/app/services/event-form-dialog/event-form-dialog.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-event-form',
@@ -29,6 +31,8 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private github: GithubService,
     private events: EventService,
+    private eventFormDialog: EventFormDialogService,
+    private _snackbar: MatSnackBar,
     private admin: AdminGuard) {
     this.maxDate.setMonth(this.minDate.getMonth() + 1);
     this.event = this.fb.group({
@@ -108,13 +112,21 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
       this.events.createEvent(event)
         .pipe(takeUntil(this.destroyed$))
         .subscribe((event: GithubEvent) => {
-          console.log(event);
-          this.loading = false;
-          this.event.enable();
+          setTimeout(() => {
+            console.log(event);
+            this.loading = false;
+            this.event.enable();
+            this.eventFormDialog.closeDialog();
+            this._snackbar.open('Successfully created event!', 'Close', {
+              duration: 10000,
+            });
+          }, 1000);
         }, (err) => {
-          console.log(err);
-          this.loading = false;
-          this.event.enable();
+          setTimeout(() => {
+            console.log(err);
+            this.loading = false;
+            this.event.enable();
+          }, 1000);
         },
         () => console.log('Created Event.'));
     }

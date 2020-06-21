@@ -1,5 +1,6 @@
 <div>
   <form [formGroup]="event">
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <section class="event-name-container">
       <mat-form-field appearance="fill">
         <mat-label>Event Name</mat-label>

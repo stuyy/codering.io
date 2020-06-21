@@ -1,5 +1,9 @@
 <div class="main">
-  <div class="main-content">
+  <div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div id="overlay4"></div>
+  <div [@fadeInOut]="!loading ? 'open' : 'closed'" class="main-content">
     <section class="main-panel">
       
     </section>

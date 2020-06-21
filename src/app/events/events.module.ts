@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [EventsPageComponent, EventItemComponent],
@@ -16,7 +17,8 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatListModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ]
 })
 export class EventsModule { }
