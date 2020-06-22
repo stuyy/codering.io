@@ -41,9 +41,6 @@ mat-card-actions {
   padding-bottom: 8px;
 }
 
-.chips-list > mat-chip {
-  font-size: 16px;
-}
 @media (max-width: 1052px) {
   .event-item {
     width: 80%;
