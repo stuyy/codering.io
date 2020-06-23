@@ -8,6 +8,7 @@ import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject, fromEvent } from 'rxjs';
 import { fadeInOut } from 'src/app/animations/animations';
+import { SocketService } from 'src/app/services/socket/socket.service';
 
 @Component({
   selector: 'app-administrator',
@@ -25,6 +26,7 @@ export class AdministratorComponent implements OnInit {
   constructor(
     private authGuard: AuthGuard,
     private sidenav: SidenavService,
+    private socket: SocketService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -54,5 +56,9 @@ export class AdministratorComponent implements OnInit {
       data: { component: CreateEventFormComponent },
       
     })
+  }
+  sendMessage(): void {
+    console.log('Yo');
+    this.socket.sendMessage('Hello World');
   }
 }

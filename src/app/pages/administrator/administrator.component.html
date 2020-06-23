@@ -5,7 +5,7 @@
   <div id="overlay4"></div>
   <div [@fadeInOut]="!loading ? 'open' : 'closed'" class="main-content">
     <section class="main-panel">
-      
+      <button mat-raised-button color="warn" (click)="sendMessage()">Click Me</button>
     </section>
     <aside class="side-panel">
       <mat-card>

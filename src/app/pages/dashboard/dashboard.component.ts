@@ -72,8 +72,9 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
         this.sidenav.close();
       });
     this.socket.getMessage()
-      .subscribe((data) => {
-        this._snackbar.open('Message Sent From WebSocket', 'Close');
+      .subscribe((data: any) => {
+        console.log(data);
+        this._snackbar.open(`Message: ${data.msg}`, 'Close');
       }, (err) => console.log(err));
   }
 
