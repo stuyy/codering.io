@@ -40,6 +40,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import { EventsModule } from './events/events.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
+
+const config: SocketIoConfig = { url: environment.ws, options: {} };
 
 @NgModule({
   declarations: [
@@ -82,7 +86,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSelectModule,
     MatSlideToggleModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     AuthGuard,

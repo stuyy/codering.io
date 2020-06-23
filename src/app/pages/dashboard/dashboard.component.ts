@@ -1,14 +1,16 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
-import { Subscription, fromEvent, Observable } from 'rxjs';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Subscription, fromEvent } from 'rxjs';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { FormControl } from '@angular/forms';
 import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
 import { fadeInOut } from 'src/app/animations/animations';
+import { SocketService } from 'src/app/services/socket/socket.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -31,7 +33,9 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
     private userService: UserService,
     private router: Router,
     private guard: AuthGuard,
-    private sidenav: SidenavService) {
+    private sidenav: SidenavService,
+    private socket: SocketService,
+    private _snackbar: MatSnackBar) {
       this.query = new FormControl('');
     }
 
@@ -67,26 +71,31 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log(event);
         this.sidenav.close();
       });
+    this.socket.getMessage()
+      .subscribe((data) => {
+        this._snackbar.open('Message Sent From WebSocket', 'Close');
+      }, (err) => console.log(err));
   }
 
   search() {
-    const { value } = this.query;
-    this.showProgressBar = true;
-    this.query.disable();
-    this.userService.getUser(value)
-      .subscribe((user: User) => {
-        this.searchAndUpdateCache(user);
-        setTimeout(() => {
-          this.showProgressBar = false;
-          this.query.enable();
-        }, 500)
-      }, (err) => {
-        console.log(err);
-        setTimeout(() => {
-          this.showProgressBar = false;
-          this.query.enable();
-        }, 500)
-      });
+    this.socket.sendMessage('hello')
+    // const { value } = this.query;
+    // this.showProgressBar = true;
+    // this.query.disable();
+    // this.userService.getUser(value)
+    //   .subscribe((user: User) => {
+    //     this.searchAndUpdateCache(user);
+    //     setTimeout(() => {
+    //       this.showProgressBar = false;
+    //       this.query.enable();
+    //     }, 500)
+    //   }, (err) => {
+    //     console.log(err);
+    //     setTimeout(() => {
+    //       this.showProgressBar = false;
+    //       this.query.enable();
+    //     }, 500)
+    //   });
   }
 
   private searchAndUpdateCache(user: User): void {
