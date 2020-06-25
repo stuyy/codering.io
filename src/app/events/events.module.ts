@@ -8,9 +8,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LeaderboardsComponent } from './pages/leaderboards/leaderboards.component';
+import { LeaderboardRankingsComponent } from './components/leaderboard-rankings/leaderboard-rankings.component';
 
 @NgModule({
-  declarations: [EventsPageComponent, EventItemComponent],
+  declarations: [EventsPageComponent, EventItemComponent, LeaderboardsComponent, LeaderboardRankingsComponent],
   imports: [
     CommonModule,
     EventsRoutingModule,

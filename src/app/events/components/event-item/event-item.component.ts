@@ -19,7 +19,7 @@ export class EventItemComponent implements OnInit {
 
   viewLeaderboards(): void {
     const { repositoryId } = this.event.repository;
-    this.router.navigate([`/event/${repositoryId}/leaderboards`])
+    this.router.navigate([`/events/${repositoryId}/leaderboards`])
   }
 
   viewPullRequests(): void {

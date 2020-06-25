@@ -86,6 +86,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe((repositories: Repository[]) => {
         this.repositories = repositories;
+        console.log(this.repositories);
       }, (err) => console.log(err));
   }
 
@@ -116,7 +117,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
             console.log(event);
             this.loading = false;
             this.event.enable();
-            this.eventFormDialog.closeDialog();
+            // this.eventFormDialog.closeDialog();
             this._snackbar.open('Successfully created event!', 'Close', {
               duration: 10000,
             });

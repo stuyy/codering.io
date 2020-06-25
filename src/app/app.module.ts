@@ -42,6 +42,7 @@ import { EventsModule } from './events/events.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const config: SocketIoConfig = { url: environment.ws, options: {} };
 
@@ -57,7 +58,8 @@ const config: SocketIoConfig = { url: environment.ws, options: {} };
     AdministratorComponent,
     SidenavComponent,
     CreateEventDialogComponent,
-    CreateEventFormComponent
+    CreateEventFormComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
