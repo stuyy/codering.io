@@ -1,0 +1,380 @@
+.landing-page-main {
+  background-color: #DCDCDC;
+  min-height: 100%;
+}
+
+h1 {
+  margin: 0;
+}
+
+::ng-deep mat-toolbar {
+  display: none !important;
+}
+
+mat-icon {
+  font-size: 48px;
+  width: 50px;
+  height: 50px;
+}
+.top-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: space-between;
+}
+.main-toolbar {
+  display: flex !important;
+  background-color: #DCDCDC;
+  justify-content: space-between;
+  font-family: 'Jost';
+  font-size: 30px;
+  padding-top: 30px;
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.right-side ul {
+  list-style-type: none;
+}
+
+.link, #login-link {
+  display: inline-block;
+  margin: 35px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:after {
+  display: block;
+  content: '';
+  padding-bottom: 10px;
+  border-bottom: solid 3px black;
+  transform: scaleX(0);
+  transition: transform 150ms ease-in-out;
+}
+
+.link:hover:after {
+  cursor: pointer;
+  transform: scaleX(1);
+}
+
+#login-btn {
+  font-family: 'Jost';
+  font-size: 30px;
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.left-bg, .right-bg {
+  width: 800px;
+  transition: .3s width ease-in-out;
+}
+
+.left-text-container {
+  margin-top: 180px;
+  margin-left: -50px;
+}
+
+.inner-left-text {
+  width: 700px;
+  position: absolute;
+  margin-top: -350px;
+  margin-left: 120px;
+  transition: .3s top ease-in-out;
+  transition: .3s left ease-in-out;
+}
+
+.inner-title {
+  font-size: 48px;
+  font-family: 'Jost';
+}
+
+.inner-subtext {
+  margin-top: 25px;
+  font-size: 28px;
+  padding-top: 20px;
+  padding-left: 3px;
+}
+
+#learn-btn {
+  margin-top: 25px;
+  margin-left: 3px;
+  font-size: 18px;
+  padding: 5px 20px;
+}
+
+
+.about-container {
+  min-height: 100vh;
+  padding-top: 50px;
+  background-color: #DCDCDC;
+}
+
+.codering-title {
+  font-size: 84px;
+  text-align: center;
+  padding: 100px 0px 100px 0px;
+  font-family: 'Jost';
+}
+
+.about-card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card-1 {
+  width: 350px;
+  background-color: rgb(233, 233, 233);
+  box-shadow: none;
+  margin: 25px;
+  padding: 35px 50px;
+  border-radius: 15px;
+}
+
+.card-1:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+.mat-card-header {
+  align-items: center;
+  margin-left: -30px;
+}
+
+.mat-card-header span {
+  font-size: 32px;
+  padding: 20px;
+}
+
+.hamburger-menu {
+  display: none;
+}
+
+@media (max-width: 1550px) {
+  .left-bg, .right-bg {
+    width: 700px;
+  }
+  .inner-left-text {
+    width: 500px;
+    margin-top: -320px;
+    margin-left: 80px;
+  }
+  .inner-title {
+    font-size: 36px;
+    font-family: 'Jost';
+  }
+  .inner-subtext {
+    margin-top: 25px;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 3px;
+  }
+}
+
+@media (max-width: 1362px) {
+  .right-bg {
+    width: 550px;
+  }
+  .left-bg {
+    width: 600px;
+  }
+  .inner-left-text {
+    width: 500px;
+    margin-top: -280px;
+    margin-left: 80px;
+  }
+  .inner-title {
+    font-size: 36px;
+    font-family: 'Jost';
+  }
+  .inner-subtext {
+    margin-top: 25px;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 3px;
+  }
+  
+  .right-container {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 1110px) {
+  .top-container {
+    flex-direction: column;
+  }
+  .right-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0px;
+  }
+  .right-bg {
+    justify-content: center;
+    width: 700px;
+  }
+  .left-bg {
+    width: 700px;
+  }
+  .inner-left-text {
+    width: 500px;
+    margin-top: -320px;
+    margin-left: 80px;
+  }
+  .inner-title {
+    font-size: 36px;
+    font-family: 'Jost';
+  }
+  .inner-subtext {
+    margin-top: 25px;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 3px;
+  }
+}
+@media (max-width: 1000px) {
+  .right-side {
+    display: none;
+  }
+  .hamburger-menu {
+    display: block;
+  }
+}
+
+@media (max-width: 998px) {
+  .card-1 {
+    width: 100%;
+    flex: 1 25%;
+    box-sizing: border-box
+  }
+}
+
+@media (max-width: 846px) {
+
+  .codering-title {
+    font-size: 64px;
+  }
+  .card-1 {
+    flex: 0 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .left-bg {
+    margin-left: -150px;
+  }
+  .right-bg {
+    width: 550px;
+  }
+  .inner-left-text {
+    width: 500px;
+    margin-top: -290px;
+    margin-left: 80px;
+  }
+  .inner-title {
+    font-size: 36px;
+    font-family: 'Jost';
+  }
+  .inner-subtext {
+    margin-top: 25px;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-left: 3px;
+  }
+}
+
+@media (max-width: 540px) {
+  .left-bg {
+    width: 600px;
+  }
+  .inner-left-text {
+    width: 300px;
+    margin-top: -270px;
+    margin-left: 80px;
+  }
+  .inner-subtext {
+    margin-top: 25px;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 3px;
+  }
+  #learn-btn {
+    margin-top: 15px;
+    margin-left: 3px;
+    font-size: 14px;
+    padding: 5px 20px;
+  }
+  .right-bg {
+    width: 500px;
+  }
+  .codering-title {
+    font-size: 48px;
+    padding: 50px 0px 50px 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .right-bg {
+    width: 440px;
+  }
+  
+  .about-card-container {
+    display: flex;
+  }
+  .card-1 {
+    width: 98%;
+    background-color: rgb(233, 233, 233);
+    box-shadow: none;
+    padding: 35px 50px;
+    border-radius: 15px;
+    flex: none;
+    margin: 8px 0px;
+  }
+  .card-1 span {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 408px) {
+  .left-bg {
+    display: none;
+  }
+  .inner-title {
+    display: none;
+  }
+  .right-bg {
+    width: 340px;
+  }
+  .codering-title {
+    font-size: 36px;
+  }
+  .inner-left-text {
+    width: 200px;
+    margin-top: -100px;
+    margin-left: 85px;
+  }
+  .inner-subtext {
+    margin-top: 25px;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 3px;
+  }
+  #learn-btn {
+    margin-top: 15px;
+    margin-left: 3px;
+    font-size: 14px;
+    padding: 5px 20px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .about-card-container {
+    width: 1920px;
+    margin: 0 auto;
+  }
+}

@@ -1,5 +1,5 @@
 #main {
-  background-color: rgb(88, 90, 87);
+  background-color: var(--light-dark-color);
   position: relative;
   box-sizing: border-box;
   overflow: hidden;

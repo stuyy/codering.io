@@ -1,0 +1,89 @@
+<div class="landing-page-main">
+  <mat-toolbar class="main-toolbar">
+    <section class="side">
+      <span>CODE RING</span>
+    </section>
+    <section class="right-side">
+      <ul>
+        <li class="link" (click)="navigate('about')">About</li>
+        <li class="link" (click)="navigate('pricing')">Pricing</li>
+        <li class="link">Contact</li>
+        <li id="login-link">
+          <button
+            color="primary"
+            id="login-btn"
+            (click)="loginGitHub()"
+            mat-flat-button>Login</button>
+        </li>
+      </ul>
+    </section>
+    <section class="hamburger-menu">
+      <mat-icon>menu</mat-icon>
+    </section>
+  </mat-toolbar>
+  <div>
+    <div class="top-container">
+      <div class="left-text-container">
+        <img src="assets/left.png" class="left-bg">
+        <div class="inner-left-text">
+          <span class="inner-title">CODE RING</span>
+          <div class="inner-subtext">
+            <p>Collaborate on programming projects.</p>
+            <p>Build. Learn. Earn Rewards</p>
+          </div>
+          <button id="learn-btn" mat-flat-button color="primary">Learn More</button>
+        </div>
+      </div>
+      <div class="right-container">
+        <img src="assets/coding.png" class="right-bg">
+      </div>
+    </div>
+    <div class="about-container" id="about">
+      <h1 class="codering-title">What is Code Ring?</h1>
+      <div class="about-card-container">
+        <mat-card class="card-1">
+          <mat-card-header>
+            <i class="far fa-calendar-alt fa-3x"></i>
+            <span>Events</span>
+          </mat-card-header>
+          <p>Periodic events for community members to participate in to learn & expand on their knowledge of programming.</p>
+        </mat-card>
+        <mat-card class="card-1">
+          <mat-card-header>
+            <i class="fas fa-infinity fa-3x"></i>
+            <span>Collaborate</span>
+          </mat-card-header>
+          <p>Gather together with other programmers. Join similar mindsets together to create community-based team.</p>
+        </mat-card>
+        <mat-card class="card-1">
+          <mat-card-header>
+            <i class="fas fa-graduation-cap fa-3x"></i>
+            <span>Learn</span>
+          </mat-card-header>
+          <p>Collaborating with other experienced developers is a great way to learn new practices and aspects!</p>
+        </mat-card>
+        <mat-card class="card-1">
+          <mat-card-header>
+            <i class="fas fa-wrench fa-3x"></i>
+            <span>Build</span>
+          </mat-card-header>
+          <p>Build awesome projects and showcase them on your portfolio!</p>
+        </mat-card>
+        <mat-card class="card-1">
+          <mat-card-header>
+            <i class="fas fa-code-branch fa-3x"></i>
+            <span>Contributions</span>
+          </mat-card-header>
+          <p>Earn points for each contribution that tallies up over time. Redeem them for awesome prizes!</p>
+        </mat-card>
+        <mat-card class="card-1">
+          <mat-card-header>
+            <i class="far fa-list-alt fa-3x"></i>
+            <span>Leaderboards</span>
+          </mat-card-header>
+          <p>Let everyone know how hard you're working by viewing leaderboard statistics.</p>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
