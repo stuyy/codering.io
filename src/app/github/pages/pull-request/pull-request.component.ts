@@ -3,13 +3,18 @@ import { GithubService } from 'src/app/services/Github/github.service';
 import { PullRequest } from 'src/app/models/PullRequest';
 import { fromEvent, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, pluck , mergeMap } from 'rxjs/operators';
 import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
+import { ActivatedRoute } from '@angular/router';
+import { fadeInOut } from 'src/app/animations/animations';
 
 @Component({
   selector: 'app-pull-request',
   templateUrl: './pull-request.component.html',
-  styleUrls: ['./pull-request.component.css']
+  styleUrls: ['./pull-request.component.css'],
+  animations: [
+    fadeInOut,
+  ]
 })
 export class PullRequestComponent implements OnInit, OnDestroy {
 
@@ -20,19 +25,24 @@ export class PullRequestComponent implements OnInit, OnDestroy {
   public mobile: boolean = false;
   public filterForm: FormControl;
   public destroyed$: Subject<boolean> = new Subject<boolean>();
+  public eventId: string = '';
+  public loading: boolean = true;
 
-  constructor(private github: GithubService, private sidenav: SidenavService) {
+  constructor(
+    private github: GithubService,
+    private sidenav: SidenavService,
+    private route: ActivatedRoute) {
     this.filterForm = new FormControl('');
   }
 
   ngOnInit(): void {
     const overlay = document.getElementById('overlay3');
     this.handleResponsive();
-    this.github.getPullRequests()
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe((pullRequests: PullRequest[]) => {
-        this.pullRequests = pullRequests;
-      }, (err) => console.log(err));
+    // this.github.getPullRequests()
+    //   .pipe(takeUntil(this.destroyed$))
+    //   .subscribe((pullRequests: PullRequest[]) => {
+    //     this.pullRequests = pullRequests;
+    //   }, (err) => console.log(err));
       
     fromEvent(window, 'resize')
       .pipe(takeUntil(this.destroyed$))
@@ -49,6 +59,16 @@ export class PullRequestComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe(() => this.sidenav.close());
   
+    this.route.params
+      .pipe(takeUntil(this.destroyed$))
+      .pipe(pluck('id'))
+      .pipe(mergeMap((id) => this.github.getPullRequestsByEventId(id)))
+      .subscribe((pullRequests: PullRequest[]) => {
+        setTimeout(() => {
+          this.pullRequests = pullRequests;
+          this.loading = false;
+        }, 300);
+      })
   }
 
   ngOnDestroy(): void {
