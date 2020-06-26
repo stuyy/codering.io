@@ -18,4 +18,5 @@ export class EventService {
   public getEvents(): Observable<GithubEvent[]> {
     return this.http.get<GithubEvent[]>(`${environment.host}/events`, { withCredentials: true });
   }
+
 }

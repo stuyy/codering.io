@@ -7,10 +7,6 @@ h1 {
   margin: 0;
 }
 
-::ng-deep mat-toolbar {
-  display: none !important;
-}
-
 mat-icon {
   font-size: 48px;
   width: 50px;

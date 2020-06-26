@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 import { GithubService } from 'src/app/services/Github/github.service';
 import { Repository } from 'src/app/models/Repository';
 import { GithubEvent } from 'src/app/models/Event';
-import { EventService } from 'src/app/services/Event/event.service';
+import { EventService } from 'src/app/services/events/event.service';
 import { EventFormDialogService } from 'src/app/services/event-form-dialog/event-form-dialog.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

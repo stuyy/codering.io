@@ -24,6 +24,6 @@ export class EventItemComponent implements OnInit {
 
   viewPullRequests(): void {
     const { repositoryId } = this.event.repository;
-    this.router.navigate([`/github/pullrequest/${repositoryId}`])
+    this.router.navigate([`/events/${repositoryId}/pull-requests`])
   }
 }

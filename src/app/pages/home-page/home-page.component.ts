@@ -27,4 +27,8 @@ export class HomePageComponent implements OnInit {
   loginGitHub(): void {
     window.location.href = environment.github;
   }
+
+  toggleSidenav() {
+    
+  }
 }

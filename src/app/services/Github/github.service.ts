@@ -29,4 +29,9 @@ export class GithubService {
       .get<Repository[]>(`https://api.github.com/search/repositories?q=user:${username}+sort:updated&per_page=100`)
       .pipe(pluck('items'));
   }
+
+  public getPullRequestsByEventId(id: string): Observable<PullRequest[]> {
+    console.log(id);
+    return this.http.get<PullRequest[]>(`${environment.host}/events/${id}/pull-requests`);
+  }
 }

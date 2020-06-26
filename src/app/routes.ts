@@ -43,12 +43,12 @@ export const authorizedRoutes: Route[] = [
     authorized: true,
     admin: false,
   },
-  {
-    name: 'Pull Requests',
-    path: 'github/pullrequest',
-    authorized: true,
-    admin: false,
-  },
+  // {
+  //   name: 'Pull Requests',
+  //   path: 'github/pullrequest',
+  //   authorized: true,
+  //   admin: false,
+  // },
   {
     name: 'Leaderboards',
     path: 'leaderboards',

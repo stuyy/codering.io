@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EventService } from 'src/app/services/Event/event.service';
+import { EventService } from 'src/app/services/events/event.service';
 import { GithubEvent } from 'src/app/models/Event';
 import { SidenavService } from 'src/app/services/sidenav/sidenav.service';
 import { takeUntil } from 'rxjs/operators';
