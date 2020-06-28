@@ -19,4 +19,7 @@ export class EventService {
     return this.http.get<GithubEvent[]>(`${environment.host}/events`, { withCredentials: true });
   }
 
+  public getLeaderboards(repositoryId: string) {
+    return this.http.get(`${environment.host}/events/${repositoryId}/leaderboards`);
+  }
 }

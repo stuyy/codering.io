@@ -1,23 +1,34 @@
 <div class="event-item">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        <span>{{event.eventName}} - Starts On: {{ event.startDate | date }}</span>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <h2>Status: {{event.status}}</h2>
-      <h2>Point System</h2>
-      <mat-chip-list class="chips-list">
-        <mat-chip>Pull Request: {{event.pullRequestPoints}}</mat-chip>
-        <mat-chip>Merged: {{event.mergedPullRequestPoints}}</mat-chip>
-        <mat-chip>Issue: {{event.issuePoints}}</mat-chip>
-        <mat-chip>Comments: {{event.commentsPoints}}</mat-chip>
-      </mat-chip-list>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="viewLeaderboards()">View Leaderboards</button>
-      <button mat-raised-button (click)="viewPullRequests()">View Pull Requests</button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="header">
+    <div class="header-main">
+      <div>
+        <p>{{event.eventName}}</p>
+      </div>
+      <div>
+        <button mat-fab color="primary" [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="viewLeaderboards()">View Leaderboards</button>
+          <button mat-menu-item (click)="viewPullRequests()">View Pull Requests</button>
+          <button mat-menu-item (click)="viewPullRequests()">View Repository</button>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="event-description">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio debitis, quae vero sunt atque eos nobis dolore voluptates recusandae ducimus!</p>
+    </div>
+  </div>
+  <div class="event-content">
+    <mat-chip-list class="mat-chip-list-stacked">
+      <mat-chip>Pull Request: {{event.pullRequestPoints}}</mat-chip>
+      <mat-chip>Merged: {{event.mergedPullRequestPoints}}</mat-chip>
+      <mat-chip>Issue: {{event.issuePoints}}</mat-chip>
+      <mat-chip>Comments: {{event.commentsPoints}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="event-footer">
+    <p>Starts On: {{event.startDate | date}}</p>
+    <p>Ends On: {{event.endDate | date}}</p>
+  </div>
 </div>

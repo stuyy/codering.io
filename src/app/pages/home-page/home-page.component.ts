@@ -29,6 +29,6 @@ export class HomePageComponent implements OnInit {
   }
 
   toggleSidenav() {
-    
+
   }
 }

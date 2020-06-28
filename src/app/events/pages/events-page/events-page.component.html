@@ -3,5 +3,12 @@
 </div>
 <div #overlay id="overlay5"></div>
 <div [@fadeInOut]="!loading ? 'open' : 'closed'" class="events-page">
-  <app-event-item *ngFor="let event of events" [event]="event"></app-event-item>
+  <div class="events-items" *ngIf="events.length !== 0; else other">
+    <app-event-item *ngFor="let event of events" [event]="event"></app-event-item>
+  </div>
+  <ng-template #other>
+    <div class="unavailable">
+      <h1>No Events Available</h1>
+    </div>
+  </ng-template>
 </div>

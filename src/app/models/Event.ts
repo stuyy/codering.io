@@ -20,4 +20,5 @@ export interface GithubEvent {
   mergedPullRequestPoints: number;
   winner?: User;
   repository: Repository;
+  repositoryId?: string;
 }

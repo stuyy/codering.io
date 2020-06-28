@@ -1,4 +1,4 @@
-.event-item {
+/* .event-item {
   width: 99%;
   margin: 0 auto;
   margin-top: 20px;
@@ -50,5 +50,67 @@ mat-card-actions {
 @media (max-width: 768px) {
   .event-item {
     width: 95%;
+  }
+} */
+
+.event-item {
+  width: 650px;
+  background-color: rgb(216, 216, 216);
+  font-family: 'Jost';
+  color: white;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.header {
+  background-color: #636363;
+  height: 120px;
+  border-bottom-right-radius: 50px;
+  font-size: 24px;
+  padding: 20px 25px;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-description {
+  font-size: 16px;
+  padding-top: 5px;
+}
+
+.event-content {
+  padding: 25px;
+}
+
+.mat-chip {
+  font-size: 18px;
+}
+
+.event-footer {
+  background-color: #636363;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+@media (max-width: 1024px) {
+  .event-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    height: 135px;
+  }
+}
+@media (max-width: 320px) {
+  .header {
+    height: 135px;
   }
 }
