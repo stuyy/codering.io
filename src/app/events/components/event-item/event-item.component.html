@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-main">
       <div>
-        <p>{{event.eventName}}</p>
+        <p>{{event.eventName}} - {{event.repository.name}}</p>
       </div>
       <div>
         <button mat-fab color="primary" [matMenuTriggerFor]="menu">
@@ -11,7 +11,7 @@
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="viewLeaderboards()">View Leaderboards</button>
           <button mat-menu-item (click)="viewPullRequests()">View Pull Requests</button>
-          <button mat-menu-item (click)="viewPullRequests()">View Repository</button>
+          <button mat-menu-item (click)="viewRepository()">View Repository</button>
         </mat-menu>
       </div>
     </div>
@@ -20,6 +20,7 @@
     </div>
   </div>
   <div class="event-content">
+    <h1>Points</h1>
     <mat-chip-list class="mat-chip-list-stacked">
       <mat-chip>Pull Request: {{event.pullRequestPoints}}</mat-chip>
       <mat-chip>Merged: {{event.mergedPullRequestPoints}}</mat-chip>
