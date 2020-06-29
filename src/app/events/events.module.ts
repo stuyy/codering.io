@@ -12,6 +12,7 @@ import { LeaderboardsComponent } from './pages/leaderboards/leaderboards.compone
 import { LeaderboardRankingsComponent } from './components/leaderboard-rankings/leaderboard-rankings.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [EventsPageComponent, EventItemComponent, LeaderboardsComponent, LeaderboardRankingsComponent],
@@ -24,7 +25,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatCardModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
   ]
 })
 export class EventsModule { }

@@ -1,1 +1,26 @@
-<p>leaderboards works!</p>
+<div class="leaderboards-root">
+  <mat-table [dataSource]="leaderboardData" class="mat-elevation-z8">
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.username}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Points">
+      <mat-header-cell *matHeaderCellDef>Points</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.totalPoints}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Contributions">
+      <mat-header-cell *matHeaderCellDef>Contributions</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.totalContributions}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Pull Requests">
+      <mat-header-cell *matHeaderCellDef>Pull Requests</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.contributions.pullRequests}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Merges">
+      <mat-header-cell *matHeaderCellDef>Merges</mat-header-cell>
+      <mat-cell *matCellDef="let data">{{data.contributions.merges}}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnDefinitions"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnDefinitions;"></mat-row>
+  </mat-table>
+</div>

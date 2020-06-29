@@ -7,7 +7,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
 }
 
@@ -61,6 +61,12 @@ mat-spinner {
 @media (min-width: 1500px) {
   .events-items {
     width: 1500px;
+  }
+}
+
+@media (max-width: 1352px) {
+  .events-items {
+    justify-content: center;
   }
 }
 

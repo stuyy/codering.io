@@ -89,6 +89,15 @@ mat-card-actions {
   font-size: 18px;
 }
 
+.event-content {
+  font-family: 'Jost';
+}
+
+.event-content h1 {
+  color: #636363;
+  font-size: 24px;
+  padding-left: 5px;
+}
 .event-footer {
   background-color: #636363;
   height: 55px;
