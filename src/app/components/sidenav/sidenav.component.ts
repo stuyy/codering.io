@@ -43,7 +43,10 @@ export class SidenavComponent implements OnInit, AfterViewInit, OnDestroy {
     this.router.events
       .pipe(takeUntil(this.destroy$))
       .subscribe((event) => {
-        if (event instanceof NavigationEnd) this.currentRoute = event.url.slice(1);
+        if (event instanceof NavigationEnd) {
+          this.currentRoute = event.url.slice(1)
+          console.log(this.currentRoute)
+        };
       }, (err) => console.log(err), () => console.log('Completed.'));
   }
   ngAfterViewInit() {

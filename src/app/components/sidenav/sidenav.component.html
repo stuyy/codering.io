@@ -1,4 +1,4 @@
-<mat-sidenav #side position="end" [disableClose]="true" opened="true">
+<mat-sidenav #side position="end" [disableClose]="true">
   <mat-sidenav-container>
     <nav>
       <section class="close">
@@ -14,11 +14,17 @@
           (click)="close()">{{route.name}}</li>
         <ng-container *ngIf="user && user.roles.includes('ADMINISTRATOR');">
           <ng-container *ngFor="let admin of adminRoutes">
-            <li [routerLink]="admin.path" (click)="close()">{{admin.name}}</li>
+            <li
+              [ngClass]="{ 'active' : admin.path === currentRoute }"
+              [routerLink]="admin.path"
+              (click)="close()">
+              {{admin.name}}
+            </li>
           </ng-container>
         </ng-container>
         <ng-container *ngIf="user && user.roles.includes('USER')">
           <li
+            [ngClass]="{ 'active' : route.path === currentRoute }"
             *ngFor="let route of authorizedRoutes"
             [routerLink]="route.path"
             (click)="close()">
@@ -31,7 +37,7 @@
         <li *ngIf="user" (click)="logout()">Logout</li>
       </ul>
       
-      <section class="user">
+      <section class="user" *ngIf="user">
         <img class="avatar" [src]="user.avatar">
         <p>@{{user.username}}</p>
       </section>
