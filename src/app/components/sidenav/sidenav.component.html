@@ -1,6 +1,11 @@
-<mat-sidenav #side position="end" [disableClose]="true">
+<mat-sidenav #side position="end" [disableClose]="true" opened="true">
   <mat-sidenav-container>
     <nav>
+      <section class="close">
+        <button mat-flat-button (click)="toggleSidenav()" color="accent">
+          <mat-icon>close</mat-icon>
+        </button>
+      </section>
       <ul class="navigation-list">
         <li *ngIf="!user" (click)="loginGitHub()">Login</li>
         <li
@@ -25,6 +30,11 @@
         </li>
         <li *ngIf="user" (click)="logout()">Logout</li>
       </ul>
+      
+      <section class="user">
+        <img class="avatar" [src]="user.avatar">
+        <p>@{{user.username}}</p>
+      </section>
     </nav>
   </mat-sidenav-container>
 </mat-sidenav> 
