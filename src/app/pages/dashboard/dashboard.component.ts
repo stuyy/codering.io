@@ -47,7 +47,6 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
       setTimeout(() => {
         this.loading = false;
         this.user = user;
-        console.log(this.user);
       }, 300)
     }, (err) => {
       this.loading = false;
@@ -55,8 +54,6 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     this.sidenav.sidenavEvents.subscribe((opened: boolean) => {
-      console.log(opened);
-      console.log(overlay)
       if (opened) {
         this.hamburgerMenuClicked = true;
         overlay.style.display = 'block';
@@ -68,12 +65,10 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
     
     fromEvent(overlay, 'click')
       .subscribe((event) => {
-        console.log(event);
         this.sidenav.close();
       });
     this.socket.getMessage()
       .subscribe((data: any) => {
-        console.log(data);
         this._snackbar.open(`Message: ${data.msg}`, 'Close');
       }, (err) => console.log(err));
   }

@@ -29,12 +29,9 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
     fromEvent(window, 'scroll')
       .subscribe((event) => {
-        console.log(window.scrollY);
         if (window.scrollY >= 300) {
-          console.log('Display Images');
           this.displayImages = true;
         } else if (window.scrollY < 250) {
-          console.log('Hide Images');
           this.displayImages = false;
         }
       })

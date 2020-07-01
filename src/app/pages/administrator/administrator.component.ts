@@ -36,7 +36,6 @@ export class AdministratorComponent implements OnInit {
         setTimeout(() => {
           this.loading = false;
           this.user = user;
-          console.log(this.user);
         }, 300);
       });
   
@@ -58,7 +57,6 @@ export class AdministratorComponent implements OnInit {
     })
   }
   sendMessage(): void {
-    console.log('Yo');
     this.socket.sendMessage('Hello World');
   }
 }

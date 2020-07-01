@@ -72,7 +72,6 @@ export class PullRequestComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('Destroying PullRequestComponent');
     this.destroyed$.next(true);
     this.destroyed$.unsubscribe();
   }

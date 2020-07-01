@@ -84,10 +84,9 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
   searchRepositories(): void {
     this.github.fetchGithubRepositories(this.adminUser.username)
       .pipe(takeUntil(this.destroyed$))
-      .subscribe((repositories: Repository[]) => {
-        this.repositories = repositories;
-        console.log(this.repositories);
-      }, (err) => console.log(err));
+      .subscribe(
+        (repositories: Repository[]) => this.repositories = repositories,
+        (err) => console.log(err));
   }
 
   submit(): void {
@@ -95,7 +94,6 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
       throw new Error('Invalid Form Inputs');
     } else {
       const { eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo } = this.event.value;
-      console.log(eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo);
       const repository = this.getRepository(selectedRepo);
       const event: GithubEvent = {
         creatorId: this.adminUser.githubId,
@@ -114,7 +112,6 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroyed$))
         .subscribe((event: GithubEvent) => {
           setTimeout(() => {
-            console.log(event);
             this.loading = false;
             this.event.enable();
             // this.eventFormDialog.closeDialog();

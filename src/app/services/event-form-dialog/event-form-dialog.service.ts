@@ -11,7 +11,6 @@ export class EventFormDialogService {
   constructor() { }
 
   closeDialog(): void {
-    console.log('Next');
     this.events.next('close');
   }
 }

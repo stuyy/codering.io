@@ -31,7 +31,6 @@ export class GithubService {
   }
 
   public getPullRequestsByEventId(id: string): Observable<PullRequest[]> {
-    console.log(id);
     return this.http.get<PullRequest[]>(`${environment.host}/events/${id}/pull-requests`);
   }
 }

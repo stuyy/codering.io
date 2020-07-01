@@ -16,7 +16,6 @@ export class PullRequestItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.pullRequest);
     this.userData = this.pullRequest.pullRequestUserData;
     this.repository = this.pullRequest.repository;
     this.prData = this.pullRequest.pullRequestData;

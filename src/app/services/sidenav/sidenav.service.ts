@@ -28,7 +28,6 @@ export class SidenavService {
   }
   toggle() {
     this.sidenav.toggle();
-    console.log(this.isOpen);
     if (this.isOpen) {
       this.isOpen = !this.isOpen;
       this.sidenavEvents.next(this.isOpen);

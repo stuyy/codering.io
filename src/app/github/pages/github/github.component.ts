@@ -60,7 +60,6 @@ export class GithubComponent implements OnInit, OnDestroy {
     });
     
     fromEvent(overlay, 'click').subscribe((event) => {
-      console.log(event);
       this.sidenav.close();
     }, (err) => console.log(err));
     
