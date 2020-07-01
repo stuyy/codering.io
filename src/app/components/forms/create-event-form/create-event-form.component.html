@@ -12,6 +12,18 @@
           <mat-error *ngIf="event.invalid">{{getErrorMessage('name')}}</mat-error>
       </mat-form-field>
     </section>
+    <section class="event-name-container">
+      <mat-form-field appearance="fill" hintLabel="Max 120 Characters">
+        <mat-label>Description</mat-label>
+        <textarea
+          #description
+          maxlength="120"
+          matInput
+          formControlName="description"></textarea>
+          <mat-error *ngIf="event.invalid">{{getErrorMessage('description')}}</mat-error>
+          <mat-hint align="end">{{description.value?.length || 0}}/120</mat-hint>
+      </mat-form-field>
+    </section>
     <section class="date-container">
       <mat-form-field appearance="fill">
         <mat-label>Start Date</mat-label>

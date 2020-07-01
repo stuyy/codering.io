@@ -37,6 +37,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
     this.maxDate.setMonth(this.minDate.getMonth() + 1);
     this.event = this.fb.group({
       eventName: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
       startDate: new FormControl('', [Validators.required]),
       endDate: new FormControl('', [Validators.required]),
       pr: new FormControl(1, [
@@ -93,7 +94,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
     if (this.event.invalid) {
       throw new Error('Invalid Form Inputs');
     } else {
-      const { eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo } = this.event.value;
+      const { eventName, startDate, endDate, pr, issue, comment, merge, selectedRepo, description} = this.event.value;
       const repository = this.getRepository(selectedRepo);
       const event: GithubEvent = {
         creatorId: this.adminUser.githubId,
@@ -105,6 +106,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
         mergedPullRequestPoints: merge,
         repository,
         eventName,
+        description,
       };
       this.event.disable();
       this.loading = true;
@@ -135,6 +137,8 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
   }
   getErrorMessage(type: string) {
     switch (type) {
+      case 'description':
+        return 'Please enter a description 120 characters or less!';
       case 'name':
         return 'You must enter a name';
       case 'start':

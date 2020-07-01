@@ -31,3 +31,7 @@ button {
 .repository-container .mat-form-field {
   width: 100%;
 }
+
+textarea {
+  resize: none !important;
+}

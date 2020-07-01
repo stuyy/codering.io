@@ -21,4 +21,5 @@ export interface GithubEvent {
   winner?: User;
   repository: Repository;
   repositoryId?: string;
+  description: string;
 }
