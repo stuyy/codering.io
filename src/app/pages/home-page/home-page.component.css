@@ -131,7 +131,6 @@ mat-icon {
 
 
 .about-container {
-  min-height: 100vh;
   padding-top: 50px;
   background-color: #DCDCDC;
 }
@@ -177,6 +176,17 @@ mat-icon {
   display: none;
 }
 
+.faq-container {
+  width: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.faq-wrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
 @media (max-width: 1550px) {
   .left-bg, .right-bg {
     width: 700px;
@@ -195,6 +205,9 @@ mat-icon {
     font-size: 22px;
     padding-top: 20px;
     padding-left: 3px;
+  }
+  .faq-wrapper {
+    width: 80%;
   }
 }
 
@@ -282,6 +295,12 @@ mat-icon {
   }
   .card-1 {
     flex: 0 100%;
+  }
+  .faq-wrapper {
+    width: 99%;
+  }
+  .faq-container {
+    padding: 10px;
   }
 }
 

@@ -6,7 +6,7 @@
     <section class="right-side">
       <ul>
         <li class="link" (click)="navigate('about')">About</li>
-        <li class="link" (click)="navigate('pricing')">Pricing</li>
+        <li class="link" (click)="navigate('faq')">FAQ</li>
         <li class="link">Contact</li>
         <li id="login-link">
           <button
@@ -89,6 +89,12 @@
           <p>Let everyone know how hard you're working by viewing leaderboard statistics.</p>
         </mat-card>
       </div>
+    </div>
+    <div class="faq-container" id="faq">
+      <h1 class="codering-title">FAQ</h1>
+      <section class="faq-wrapper">
+        <app-faq></app-faq>
+      </section>
     </div>
   </div>
 </div>

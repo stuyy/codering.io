@@ -43,6 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { environment } from 'src/environments/environment';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FaqComponent } from './components/faq/faq.component';
 
 const config: SocketIoConfig = { url: environment.ws, options: {} };
 
@@ -59,7 +61,8 @@ const config: SocketIoConfig = { url: environment.ws, options: {} };
     SidenavComponent,
     CreateEventDialogComponent,
     CreateEventFormComponent,
-    HomePageComponent
+    HomePageComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +92,7 @@ const config: SocketIoConfig = { url: environment.ws, options: {} };
     MatSlideToggleModule,
     MatChipsModule,
     MatSnackBarModule,
+    MatExpansionModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [
