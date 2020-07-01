@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  public isAuthorized: boolean = false;
+
+  constructor(private authGuard: AuthGuard) { }
 
   ngOnInit(): void {
 

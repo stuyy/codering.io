@@ -18,7 +18,12 @@
       </ul>
     </section>
     <section class="hamburger-menu">
-      <mat-icon (click)="toggleSidenav()">menu</mat-icon>
+      <button [matMenuTriggerFor]="menu" mat-flat-button class="menu-btn" color="primary">
+        <mat-icon (click)="toggleSidenav()">menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" color="primary" class="home-mat-menu">
+        <button class="menu-item" mat-menu-item (click)="loginGitHub()">Login</button>
+      </mat-menu>
     </section>
   </mat-toolbar>
   <div>
