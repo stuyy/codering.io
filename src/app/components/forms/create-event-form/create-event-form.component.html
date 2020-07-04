@@ -99,7 +99,17 @@
         </mat-form-field>
       </section>
     </section>
-    <h2>Search Repository</h2>
+    <mat-checkbox (change)="checked($event)">Organization</mat-checkbox>
+    <section class="repository-container" *ngIf="organizationToggled">
+      <mat-form-field appearance="outline">
+        <mat-label>Organization</mat-label>
+        <mat-select formControlName="selectedOrg" name="org" (selectionChange)="updateSelectedOrg($event)">
+          <mat-option *ngFor="let org of organizations" [value]="org.login">
+            {{org.login}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
     <section class="repository-container">
       <mat-form-field appearance="outline">
         <mat-label>Repository</mat-label>

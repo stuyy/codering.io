@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { PullRequest } from 'src/app/models/PullRequest';
 import { Repository } from 'src/app/models/Repository';
 import { pluck } from 'rxjs/operators';
+import { Organization } from 'src/app/models/Organization';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,13 @@ export class GithubService {
 
   public getPullRequestsByEventId(id: string): Observable<PullRequest[]> {
     return this.http.get<PullRequest[]>(`${environment.host}/events/${id}/pull-requests`);
+  }
+
+  public getOrganizations(): Observable<Organization[]> {
+    return this.http.get<Organization[]>(`${environment.host}/github/organizations`, { withCredentials: true });
+  }
+
+  public getOrganizationRepositories(org: string): Observable<Repository[]> {
+    return this.http.get<Repository[]>(`${environment.host}/github/organizations/${org}/repositories`, { withCredentials: true });
   }
 }

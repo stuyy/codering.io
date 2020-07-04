@@ -45,6 +45,8 @@ import { environment } from 'src/environments/environment';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FaqComponent } from './components/faq/faq.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 const config: SocketIoConfig = { url: environment.ws, options: {} };
 
@@ -93,6 +95,7 @@ const config: SocketIoConfig = { url: environment.ws, options: {} };
     MatChipsModule,
     MatSnackBarModule,
     MatExpansionModule,
+    MatCheckboxModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [
