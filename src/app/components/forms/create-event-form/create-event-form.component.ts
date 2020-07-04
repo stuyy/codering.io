@@ -10,6 +10,7 @@ import { GithubEvent } from 'src/app/models/Event';
 import { EventService } from 'src/app/services/events/event.service';
 import { EventFormDialogService } from 'src/app/services/event-form-dialog/event-form-dialog.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Organization } from 'src/app/models/Organization';
 
 @Component({
   selector: 'app-create-event-form',
@@ -25,7 +26,10 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
   public adminUser: User;
   public destroyed$: Subject<boolean> = new Subject<boolean>();
   public repositories: Repository[] = [];
+  public organizations: Organization[] = [];
   public loading: boolean = false;
+  public organizationToggled: boolean = false;
+  public userRepositories: Repository[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -60,7 +64,8 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
         Validators.min(1),
         Validators.max(10)
       ]),
-      selectedRepo: new FormControl('', Validators.required)
+      selectedRepo: new FormControl('', Validators.required),
+      selectedOrg: new FormControl('', Validators.required),
     });
 
   }
@@ -73,8 +78,20 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
         (user) => this.adminUser = user,
         (err) => console.log(err),
         () => console.log('Completed.'));
+        
+    this.github.getOrganizations()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((orgs: Organization[]) => this.organizations = orgs,
+      (err) => console.log(err));
+  
     
-    this.searchRepositories();
+    this.github.fetchGithubRepositories(this.adminUser.username)
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(
+        (repositories: Repository[]) => {
+          this.userRepositories = repositories;
+          this.repositories = repositories;
+        }, (err) => console.log(err));
   }
 
   ngOnDestroy(): void {
@@ -82,12 +99,22 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
     this.destroyed$.unsubscribe();
   }
 
-  searchRepositories(): void {
-    this.github.fetchGithubRepositories(this.adminUser.username)
+  checked($event): void {
+    this.organizationToggled = $event.checked;
+    this.event.get('selectedOrg').setValue(undefined);
+    this.event.get('selectedRepo').setValue(undefined);
+    if (!this.organizationToggled) {
+      this.repositories = this.userRepositories;
+    } else {
+      this.repositories = [];
+    }
+  }
+
+  updateSelectedOrg($event): void {
+    this.github.getOrganizationRepositories($event.value)
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(
-        (repositories: Repository[]) => this.repositories = repositories,
-        (err) => console.log(err));
+      .subscribe((repos: Repository[]) => this.repositories = repos,
+      (err) => console.log(err));
   }
 
   submit(): void {

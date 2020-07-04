@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/User';
 import { Subscription, fromEvent } from 'rxjs';
@@ -17,7 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./dashboard.component.css'],
   animations: [
     fadeInOut
-  ]
+  ],
 })
 export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
 
@@ -110,6 +110,7 @@ export class DashboardComponent implements OnInit, OnDestroy, AfterViewInit {
   
   ngOnDestroy(): void {
     this.auth$.unsubscribe();
+    console.log('Dashboard Destroyed');
   }
 
   createOverlayObservable() {

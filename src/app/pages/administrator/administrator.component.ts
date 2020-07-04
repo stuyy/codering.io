@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { User } from 'src/app/models/User';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +14,7 @@ import { SocketService } from 'src/app/services/socket/socket.service';
   selector: 'app-administrator',
   templateUrl: './administrator.component.html',
   styleUrls: ['./administrator.component.css'],
-  animations: [fadeInOut]
+  animations: [fadeInOut],
 })
 export class AdministratorComponent implements OnInit {
 
