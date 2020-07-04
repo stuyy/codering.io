@@ -65,7 +65,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
         Validators.max(10)
       ]),
       selectedRepo: new FormControl('', Validators.required),
-      selectedOrg: new FormControl('', Validators.required),
+      selectedOrg: new FormControl(''),
     });
 
   }
@@ -143,7 +143,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
           setTimeout(() => {
             this.loading = false;
             this.event.enable();
-            // this.eventFormDialog.closeDialog();
+            this.eventFormDialog.closeDialog();
             this._snackbar.open('Successfully created event!', 'Close', {
               duration: 10000,
             });
@@ -154,8 +154,7 @@ export class CreateEventFormComponent implements OnInit, OnDestroy {
             this.loading = false;
             this.event.enable();
           }, 1000);
-        },
-        () => console.log('Created Event.'));
+        }, () => console.log('Created Event.'));
     }
   }
 
